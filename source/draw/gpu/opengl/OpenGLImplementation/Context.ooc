@@ -82,8 +82,11 @@ Context: class {
 		this _eglDisplay = eglGetDisplay(window display)
 		if (this _eglDisplay == null)
 			return false
-		eglInitialize(this _eglDisplay, null, null)
-		eglBindAPI(EGL_OPENGL_ES_API)
+		if (!eglInitialize(this _eglDisplay, null, null))
+			raise("Failed to initialize egl")
+		if (!eglBindAPI(EGL_OPENGL_ES_API))
+			raise("Fail to bind egl API")
+
 		configAttribs := [
 			EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 			EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
@@ -105,9 +108,11 @@ Context: class {
 		this _eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY)
 		if (this _eglDisplay == null)
 			raise("Failed to get default display")
-		eglInitialize(this _eglDisplay, null, null)
-		eglBindAPI(EGL_OPENGL_ES_API)
-
+		if (!eglInitialize(this _eglDisplay, null, null))
+			raise("Failed to initialize egl")
+		if (!eglBindAPI(EGL_OPENGL_ES_API))
+			raise("Fail to bind egl API")
+			
 		configAttribs := [
 			EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,
 			EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
