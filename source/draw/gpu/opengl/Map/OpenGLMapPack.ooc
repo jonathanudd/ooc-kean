@@ -23,7 +23,6 @@ OpenGLMapPack: abstract class extends OpenGLMap {
 OpenGLMapPackMonochrome: class extends OpenGLMapPack {
 	init: func (context: GpuContext) { super(This vertexSource, This fragmentSource, context) }
 	vertexSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform mat4 transform;
 		uniform float xOffset;
@@ -39,7 +38,6 @@ OpenGLMapPackMonochrome: class extends OpenGLMapPack {
 			gl_Position = transform * vec4(vertexPosition.x, vertexPosition.y, 0, 1);
 		}"
 	fragmentSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform sampler2D texture0;
 		in highp vec2 fragmentTextureCoordinate[4];
@@ -55,7 +53,6 @@ OpenGLMapPackMonochrome: class extends OpenGLMapPack {
 OpenGLMapPackUv: class extends OpenGLMapPack {
 	init: func (context: GpuContext) { super(This vertexSource, This fragmentSource, context) }
 	vertexSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform mat4 transform;
 		uniform float xOffset;
@@ -69,7 +66,6 @@ OpenGLMapPackUv: class extends OpenGLMapPack {
 			gl_Position = transform * vec4(vertexPosition.x, vertexPosition.y, 0, 1);
 		}"
 	fragmentSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform sampler2D texture0;
 		in highp vec2 fragmentTextureCoordinate[2];
@@ -95,7 +91,6 @@ OpenGLMapUnpack: abstract class extends OpenGLMap {
 		this program setUniform("transform", this transform)
 	}
 	vertexSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform float startY;
 		uniform float scaleX;
@@ -120,7 +115,6 @@ OpenGLMapUnpackRgbaToMonochrome: class extends OpenGLMapUnpack {
 		this program setUniform("startY", 0.0f)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform sampler2D texture0;
 		uniform int targetWidth;
@@ -143,7 +137,6 @@ OpenGLMapUnpackRgbaToUv: class extends OpenGLMapUnpack {
 		this program setUniform("scaleY", scaleY)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision mediump float;
 		uniform sampler2D texture0;
 		uniform int targetWidth;

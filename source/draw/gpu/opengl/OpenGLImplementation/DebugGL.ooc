@@ -58,8 +58,10 @@ printVersionInfo: func {
 	vendor: CString = glGetString(GL_VENDOR) as CString
 	renderer: CString = glGetString(GL_RENDERER) as CString
 	version: CString = glGetString(GL_VERSION) as CString
+	GLSLversion: CString = glGetString(GL_SHADING_LANGUAGE_VERSION) as CString
 
 	Debug print("OpenGL vendor: %s" format(vendor))
 	Debug print("OpenGL renderer: %s" format(renderer))
 	Debug print("OpenGL version: %s" format(version))
+	Debug print("OpenGL GLSLversion: %s" format(GLSLversion))
 }

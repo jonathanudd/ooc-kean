@@ -192,7 +192,4 @@ Context: class {
 		result := This new()
 		result _generate(sharedContext) ? result : null
 	}
-	getGLSLVersion: func -> CString {
-		glGetString(GL_SHADING_LANGUAGE_VERSION) as CString
-	}
 }

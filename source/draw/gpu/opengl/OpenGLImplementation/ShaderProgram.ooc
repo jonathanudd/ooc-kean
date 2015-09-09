@@ -204,9 +204,13 @@ ShaderProgram: class {
 		success
 	}
 	create: static func (vertexSource, fragmentSource: String) -> This {
+		version: String
+		version(GLES3) { version = "\t\t#version 300 es" }
+		version(GL3) { version = "\t\t#version 130" }
+
 		version(debugGL) { validateStart() }
 		result := This new()
-		result = result _compileShaders(vertexSource, fragmentSource) ? result : null
+		result = result _compileShaders(version+vertexSource, version+fragmentSource) ? result : null
 		version(debugGL) { validateEnd("ShaderProgram create") }
 		result
 	}

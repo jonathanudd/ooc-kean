@@ -194,7 +194,4 @@ OpenGLContext: class extends GpuContext {
 		fence sync()
 		(result, fence)
 	}
-	getGLSLVersion: func -> CString {
-		this _backend getGLSLVersion()
-	}
 }

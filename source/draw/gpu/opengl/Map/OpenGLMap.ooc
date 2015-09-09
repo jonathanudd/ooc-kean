@@ -54,7 +54,6 @@ OpenGLMap: abstract class extends GpuMap {
 OpenGLMapDefault: abstract class extends OpenGLMap {
 	init: func (fragmentSource: String, context: GpuContext) { super(This vertexSource, fragmentSource, context) }
 	vertexSource: static String ="
-		#version 300 es
 		precision highp float;
 		layout(location = 0) in vec2 vertexPosition;
 		layout(location = 1) in vec2 textureCoordinate;
@@ -73,7 +72,6 @@ OpenGLMapDefaultTexture: class extends OpenGLMapDefault {
 		this program setUniform("texture0", 0)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform sampler2D texture0;
 		in vec2 fragmentTextureCoordinate;
@@ -91,7 +89,6 @@ OpenGLMapTransform: abstract class extends OpenGLMap {
 		this program setUniform("textureTransform", this textureTransform)
 	}
 	vertexSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform mat4 transform;
 		uniform mat4 textureTransform;
@@ -109,7 +106,6 @@ OpenGLMapTransform: abstract class extends OpenGLMap {
 OpenGLMapTransformTexture: class extends OpenGLMapTransform {
 	init: func (context: GpuContext) { super(This fragmentSource, context) }
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform sampler2D texture0;
 		in vec2 fragmentTextureCoordinate;
@@ -121,7 +117,6 @@ OpenGLMapTransformTexture: class extends OpenGLMapTransform {
 OpenGLMapMonochromeToBgra: class extends OpenGLMapDefaultTexture {
 	init: func (context: GpuContext) { super(This customFragmentSource, context) }
 	customFragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform sampler2D texture0;
 		in vec2 fragmentTextureCoordinate;
@@ -140,7 +135,6 @@ OpenGLMapYuvPlanarToBgra: class extends OpenGLMapTransform {
 		this program setUniform("texture2", 2)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform sampler2D texture0;
 		uniform sampler2D texture1;
@@ -171,7 +165,6 @@ OpenGLMapYuvSemiplanarToBgra: class extends OpenGLMapTransform {
 		this program setUniform("texture1", 1)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform sampler2D texture0;
 		uniform sampler2D texture1;
@@ -200,7 +193,6 @@ OpenGLMapLines: class extends OpenGLMapTransform {
 		this program setUniform("color", this color)
 	}
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform vec3 color;
 		out vec4 outColor;
@@ -224,7 +216,6 @@ OpenGLMapPoints: class extends OpenGLMap {
 		this program setUniform("transform", this projection)
 	}
 	vertexSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform float pointSize;
 		uniform mat4 transform;
@@ -234,7 +225,6 @@ OpenGLMapPoints: class extends OpenGLMap {
 			gl_Position = transform * vec4(vertexPosition.x, vertexPosition.y, 0, 1);
 		}"
 	fragmentSource: static String ="
-		#version 300 es
 		precision highp float;
 		uniform vec3 color;
 		out vec4 outColor;
