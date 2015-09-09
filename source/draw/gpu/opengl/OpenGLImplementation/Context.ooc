@@ -81,7 +81,7 @@ Context: class {
 	_generate: func (window: NativeWindow, sharedContext: This) -> Bool {
 		EGL_OPENGL_BIT_FLAG: UInt
 		EGL_OPENGL_API_FLAG: UInt
-		version(GLES) {
+		version(GLES3) {
 			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_ES2_BIT
 			EGL_OPENGL_API_FLAG = EGL_OPENGL_ES_API
 		}
@@ -118,7 +118,7 @@ Context: class {
 	_generate: func ~pbuffer (sharedContext: This) -> Bool {
 		EGL_OPENGL_BIT_FLAG: UInt
 		EGL_OPENGL_API_FLAG: UInt
-		version(GLES) {
+		version(GLES3) {
 			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_ES2_BIT
 			EGL_OPENGL_API_FLAG = EGL_OPENGL_ES_API
 		}
@@ -180,13 +180,13 @@ Context: class {
 	}
 	create: static func ~shared (window: NativeWindow, sharedContext: This = null) -> This {
 		version(debugGL) { Debug print("Creating OpenGL context") }
-		version(!(GLES || GL3)) { raise("No GL version set") }
+		version(!(GLES3 || GL3)) { raise("No GL version set") }
 		result := This new()
 		result _generate(window, sharedContext) ? result : null
 	}
 	create: static func ~pbufferShared (sharedContext: This = null) -> This {
 		version(debugGL) { Debug print("Creating OpenGL context") }
-		version(!(GLES || GL3)) { raise("No GL version set") }
+		version(!(GLES3 || GL3)) { raise("No GL version set") }
 		result := This new()
 		result _generate(sharedContext) ? result : null
 	}
