@@ -79,17 +79,28 @@ Context: class {
 		}
 	}
 	_generate: func (window: NativeWindow, sharedContext: This) -> Bool {
+		EGL_OPENGL_BIT_FLAG: UInt
+		EGL_OPENGL_API_FLAG: UInt
+		version(GLES) {
+			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_ES2_BIT
+			EGL_OPENGL_API_FLAG = EGL_OPENGL_ES_API
+		}
+		version(GL3) {
+			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_BIT
+			EGL_OPENGL_API_FLAG = EGL_OPENGL_API
+		}
+
 		this _eglDisplay = eglGetDisplay(window display)
 		if (this _eglDisplay == null)
 			return false
 		if (!eglInitialize(this _eglDisplay, null, null))
 			raise("Failed to initialize egl")
-		if (!eglBindAPI(EGL_OPENGL_ES_API))
+		if (!eglBindAPI(EGL_OPENGL_API_FLAG))
 			raise("Fail to bind egl API")
 
 		configAttribs := [
 			EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-			EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+			EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT_FLAG,
 			EGL_BUFFER_SIZE, 16,
 			EGL_NONE] as Int*
 		chosenConfig: Pointer = this _chooseConfig(configAttribs)
@@ -105,17 +116,28 @@ Context: class {
 		this makeCurrent()
 	}
 	_generate: func ~pbuffer (sharedContext: This) -> Bool {
+		EGL_OPENGL_BIT_FLAG: UInt
+		EGL_OPENGL_API_FLAG: UInt
+		version(GLES) {
+			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_ES2_BIT
+			EGL_OPENGL_API_FLAG = EGL_OPENGL_ES_API
+		}
+		version(GL3) {
+			EGL_OPENGL_BIT_FLAG = EGL_OPENGL_BIT
+			EGL_OPENGL_API_FLAG = EGL_OPENGL_API
+		}
+
 		this _eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY)
 		if (this _eglDisplay == null)
 			raise("Failed to get default display")
 		if (!eglInitialize(this _eglDisplay, null, null))
 			raise("Failed to initialize egl")
-		if (!eglBindAPI(EGL_OPENGL_ES_API))
+		if (!eglBindAPI(EGL_OPENGL_API_FLAG))
 			raise("Fail to bind egl API")
-			
+
 		configAttribs := [
 			EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,
-			EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+			EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT_FLAG,
 			EGL_BLUE_SIZE, 8,
 			EGL_GREEN_SIZE, 8,
 			EGL_RED_SIZE, 8,
@@ -158,11 +180,13 @@ Context: class {
 	}
 	create: static func ~shared (window: NativeWindow, sharedContext: This = null) -> This {
 		version(debugGL) { Debug print("Creating OpenGL context") }
+		version(!(GLES || GL3)) { raise("No GL version set") }
 		result := This new()
 		result _generate(window, sharedContext) ? result : null
 	}
 	create: static func ~pbufferShared (sharedContext: This = null) -> This {
 		version(debugGL) { Debug print("Creating OpenGL context") }
+		version(!(GLES || GL3)) { raise("No GL version set") }
 		result := This new()
 		result _generate(sharedContext) ? result : null
 	}
