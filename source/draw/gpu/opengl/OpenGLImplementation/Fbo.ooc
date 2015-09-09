@@ -17,8 +17,9 @@
 
 use ooc-base
 use ooc-math
-use ooc-opengl-version
 import Texture, DebugGL
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 Fbo: class {
 	_backend: UInt

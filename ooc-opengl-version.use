@@ -1,9 +1,0 @@
-Name: ooc OpenGLVersion
-Description: Used by openGL wrapper to import the correct version of includefile
-SourcePath: source/draw/gpu/opengl/OpenGLImplementation/include
-version(GLES3) {
-  Imports: gles3
-}
-version(GL3) {
-  Imports: gl3
-}

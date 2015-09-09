@@ -15,10 +15,12 @@
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
 use ooc-base
-use ooc-opengl-version
 import os/Time
 import threading/native/ConditionUnix
 import threading/Thread
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
+
 Fence: class {
 	_backend: Pointer = null
 	_syncCondition: ConditionUnix

@@ -16,7 +16,9 @@
  */
 use ooc-base
 use ooc-math
-import egl/egl, include/gles3, NativeWindow, DebugGL
+import egl/egl, NativeWindow, DebugGL
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 Context: class {
 	_eglContext: Pointer
@@ -189,5 +191,8 @@ Context: class {
 		version(!(GLES3 || GL3)) { raise("No GL version set") }
 		result := This new()
 		result _generate(sharedContext) ? result : null
+	}
+	getGLSLVersion: func -> CString {
+		glGetString(GL_SHADING_LANGUAGE_VERSION) as CString
 	}
 }

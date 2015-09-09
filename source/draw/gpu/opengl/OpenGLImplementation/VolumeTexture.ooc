@@ -16,8 +16,10 @@
 */
 use ooc-math
 use ooc-base
-use ooc-opengl-version
 import Context
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
+
 VolumeTexture: class {
 	_backend: UInt
 	backend: UInt { get { this _backend } }

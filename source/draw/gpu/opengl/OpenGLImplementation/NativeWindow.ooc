@@ -15,8 +15,9 @@
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use ooc-opengl-version
-
+ version (GLES3) { import include/gles3 }
+ version (GL3) { import include/gl3 }
+ 
 NativeWindow: abstract class {
 	_display: Pointer
 	display: Pointer { get { _display } }

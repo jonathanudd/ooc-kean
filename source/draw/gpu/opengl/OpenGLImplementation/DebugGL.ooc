@@ -1,8 +1,9 @@
 use ooc-base
-use ooc-opengl-version
 import egl/egl
 import text/StringTokenizer
 import structs/ArrayList
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 validateStart: func {
 	validate("from unknown location")

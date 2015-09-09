@@ -195,6 +195,6 @@ OpenGLContext: class extends GpuContext {
 		(result, fence)
 	}
 	getGLSLVersion: func -> CString {
-		glGetString(GL_SHADING_LANGUAGE_VERSION) as CString
+		this _backend getGLSLVersion()
 	}
 }

@@ -16,9 +16,10 @@
  */
 use ooc-math
 use ooc-base
-use ooc-opengl-version
 import DebugGL
 import Context
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 TextureType: enum {
 	monochrome

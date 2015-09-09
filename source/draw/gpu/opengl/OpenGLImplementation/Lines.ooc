@@ -15,8 +15,9 @@
  * along with This software. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use ooc-opengl-version
 use ooc-math
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 Lines: class {
 	draw: static func (positions: Float*, count: Int, dimensions: Int, lineWidth: Float) {

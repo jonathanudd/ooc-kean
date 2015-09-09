@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with This software. If not, see <http://www.gnu.org/licenses/>.
  */
-use ooc-opengl-version
 import Vao, DebugGL
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 Quad: class {
 	vao: Vao

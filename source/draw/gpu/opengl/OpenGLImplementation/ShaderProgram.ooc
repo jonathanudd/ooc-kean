@@ -16,8 +16,9 @@
  */
 
 use ooc-math
-use ooc-opengl-version
 import DebugGL
+version (GLES3) { import include/gles3 }
+version (GL3) { import include/gl3 }
 
 ShaderProgram: class {
 	_backend: UInt
