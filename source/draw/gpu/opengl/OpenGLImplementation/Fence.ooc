@@ -15,8 +15,8 @@
  * along with this software. If not, see <http://www.gnu.org/licenses/>.
  */
 use ooc-base
+use ooc-opengl-version
 import os/Time
-import include/gles3
 import threading/native/ConditionUnix
 import threading/Thread
 Fence: class {

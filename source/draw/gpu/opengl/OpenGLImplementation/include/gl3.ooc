@@ -134,7 +134,7 @@ glClearColor: extern func (red: Float, green: Float, blue: Float, alpha: Float)
 glClear: extern func (mask: UInt)
 glIndexMask: extern func (mask: UInt)
 glColorMask: extern func (red: UInt, green: UInt, blue: UInt, alpha: UInt)
-glAlphaFunc: extern func (func: UInt, ref: Float)
+glAlphaFunc: extern func (function: UInt, ref: Float)
 glBlendFunc: extern func (sfactor: UInt, dfactor: UInt)
 glLogicOp: extern func (opcode: UInt)
 glCullFace: extern func (mode: UInt)
@@ -163,20 +163,20 @@ glGetDoublev: extern func (pname: UInt, params: Double*)
 glGetFloatv: extern func (pname: UInt, params: Float*)
 glGetIntegerv: extern func (pname: UInt, params: Int*)
 glPushAttrib: extern func (mask: UInt)
-glPopAttrib: extern func 
+glPopAttrib: extern func
 glPushClientAttrib: extern func (mask: UInt)
-glPopClientAttrib: extern func 
+glPopClientAttrib: extern func
 glRenderMode: extern func (mode: UInt) -> Int
 glGetError: extern func  -> UInt
 glGetString: extern func (name: UInt) -> Char*
-glFinish: extern func 
-glFlush: extern func 
+glFinish: extern func
+glFlush: extern func
 glHint: extern func (target: UInt, mode: UInt)
 /*
 * Depth Buffer
 */
 glClearDepth: extern func (depth: Double)
-glDepthFunc: extern func (func: UInt)
+glDepthFunc: extern func (function: UInt)
 glDepthMask: extern func (flag: UInt)
 glDepthRange: extern func (near_val: Double, far_val: Double)
 /*
@@ -191,9 +191,9 @@ glMatrixMode: extern func (mode: UInt)
 glOrtho: extern func (left: Double, right: Double, bottom: Double, top: Double, near_val: Double, far_val: Double)
 glFrustum: extern func (left: Double, right: Double, bottom: Double, top: Double, near_val: Double, far_val: Double)
 glViewport: extern func (x: Int, y: Int, width: Int, height: Int)
-glPushMatrix: extern func 
-glPopMatrix: extern func 
-glLoadIdentity: extern func 
+glPushMatrix: extern func
+glPopMatrix: extern func
+glLoadIdentity: extern func
 glLoadMatrixd: extern func (m: Double*)
 glLoadMatrixf: extern func (m: Float*)
 glMultMatrixd: extern func (m: Double*)
@@ -211,7 +211,7 @@ glIsList: extern func (list: UInt) -> UInt
 glDeleteLists: extern func (list: UInt, range: Int)
 glGenLists: extern func (range: Int) -> UInt
 glNewList: extern func (list: UInt, mode: UInt)
-glEndList: extern func 
+glEndList: extern func
 glCallList: extern func (list: UInt)
 glCallLists: extern func (n: Int, type: UInt, lists: Pointer)
 glListBase: extern func (base: UInt)
@@ -219,7 +219,7 @@ glListBase: extern func (base: UInt)
 * Drawing Functions
 */
 glBegin: extern func (mode: UInt)
-glEnd: extern func 
+glEnd: extern func
 glVertex2d: extern func (x: Double, y: Double)
 glVertex2f: extern func (x: Float, y: Float)
 glVertex2i: extern func (x: Int, y: Int)
@@ -416,7 +416,7 @@ glCopyPixels: extern func (x: Int, y: Int, width: Int, height: Int, type: UInt)
 /*
 * Stenciling
 */
-glStencilFunc: extern func (func: UInt, ref: Int, mask: UInt)
+glStencilFunc: extern func (function: UInt, ref: Int, mask: UInt)
 glStencilMask: extern func (mask: UInt)
 glStencilOp: extern func (fail: UInt, zfail: UInt, zpass: UInt)
 glClearStencil: extern func (s: Int)
@@ -501,10 +501,10 @@ glFogiv: extern func (pname: UInt, params: Int*)
 glFeedbackBuffer: extern func (size: Int, type: UInt, buffer: Float*)
 glPassThrough: extern func (token: Float)
 glSelectBuffer: extern func (size: Int, buffer: UInt*)
-glInitNames: extern func 
+glInitNames: extern func
 glLoadName: extern func (name: UInt)
 glPushName: extern func (name: UInt)
-glPopName: extern func 
+glPopName: extern func
 /*
 * OpenGL 1.2
 */
@@ -519,8 +519,8 @@ glCopyTexSubImage3D: extern func (target: UInt, level: Int, xoffset: Int, yoffse
 GL_CONSTANT_COLOR,GL_ONE_MINUS_CONSTANT_COLOR,GL_CONSTANT_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA,GL_COLOR_TABLE,GL_POST_CONVOLUTION_COLOR_TABLE,GL_POST_COLOR_MATRIX_COLOR_TABLE,GL_PROXY_COLOR_TABLE,GL_PROXY_POST_CONVOLUTION_COLOR_TABLE,GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE,GL_COLOR_TABLE_SCALE,GL_COLOR_TABLE_BIAS,GL_COLOR_TABLE_FORMAT,GL_COLOR_TABLE_WIDTH,GL_COLOR_TABLE_RED_SIZE,GL_COLOR_TABLE_GREEN_SIZE,GL_COLOR_TABLE_BLUE_SIZE,GL_COLOR_TABLE_ALPHA_SIZE,GL_COLOR_TABLE_LUMINANCE_SIZE,GL_COLOR_TABLE_INTENSITY_SIZE,GL_CONVOLUTION_1D,GL_CONVOLUTION_2D,GL_SEPARABLE_2D,GL_CONVOLUTION_BORDER_MODE,GL_CONVOLUTION_FILTER_SCALE,GL_CONVOLUTION_FILTER_BIAS,GL_REDUCE,GL_CONVOLUTION_FORMAT,GL_CONVOLUTION_WIDTH,GL_CONVOLUTION_HEIGHT,GL_MAX_CONVOLUTION_WIDTH,GL_MAX_CONVOLUTION_HEIGHT,GL_POST_CONVOLUTION_RED_SCALE,GL_POST_CONVOLUTION_GREEN_SCALE,GL_POST_CONVOLUTION_BLUE_SCALE,GL_POST_CONVOLUTION_ALPHA_SCALE,GL_POST_CONVOLUTION_RED_BIAS,GL_POST_CONVOLUTION_GREEN_BIAS,GL_POST_CONVOLUTION_BLUE_BIAS,GL_POST_CONVOLUTION_ALPHA_BIAS,GL_CONSTANT_BORDER,GL_REPLICATE_BORDER,GL_CONVOLUTION_BORDER_COLOR,GL_COLOR_MATRIX,GL_COLOR_MATRIX_STACK_DEPTH,GL_MAX_COLOR_MATRIX_STACK_DEPTH,GL_POST_COLOR_MATRIX_RED_SCALE,GL_POST_COLOR_MATRIX_GREEN_SCALE,GL_POST_COLOR_MATRIX_BLUE_SCALE,GL_POST_COLOR_MATRIX_ALPHA_SCALE,GL_POST_COLOR_MATRIX_RED_BIAS,GL_POST_COLOR_MATRIX_GREEN_BIAS,GL_POST_COLOR_MATRIX_BLUE_BIAS,GL_POST_COLOR_MATRIX_ALPHA_BIAS,GL_HISTOGRAM,GL_PROXY_HISTOGRAM,GL_HISTOGRAM_WIDTH,GL_HISTOGRAM_FORMAT,GL_HISTOGRAM_RED_SIZE,GL_HISTOGRAM_GREEN_SIZE,GL_HISTOGRAM_BLUE_SIZE,GL_HISTOGRAM_ALPHA_SIZE,GL_HISTOGRAM_LUMINANCE_SIZE,GL_HISTOGRAM_SINK,GL_MINMAX,GL_MINMAX_FORMAT,GL_MINMAX_SINK,GL_TABLE_TOO_LARGE,GL_BLEND_EQUATION,GL_MIN,GL_MAX,GL_FUNC_ADD,GL_FUNC_SUBTRACT,GL_FUNC_REVERSE_SUBTRACT,GL_BLEND_COLOR: extern const UInt
 glColorTable: extern func (target: UInt, internalformat: UInt, width: Int, format: UInt, type: UInt, table: Pointer)
 glColorSubTable: extern func (target: UInt, start: Int, count: Int, format: UInt, type: UInt, data: Pointer)
-glColorTableParameteriv(GLenum: extern func (target: UInt, pname: UInt, params: Int*)
-glColorTableParameterfv(GLenum: extern func (target: UInt, pname: UInt, params: Float*)
+glColorTableParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
+glColorTableParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
 glCopyColorSubTable: extern func (target: UInt, start: Int, x: Int, y: Int, width: Int)
 glCopyColorTable: extern func (target: UInt, internalformat: UInt, x: Int, y: Int, width: Int)
 glGetColorTable: extern func (target: UInt, format: UInt, type: UInt, table: Pointer)
@@ -611,50 +611,46 @@ glMultiTexCoord4i: extern func (target: UInt, s: Int, t: Int, r: Int, q: Int)
 glMultiTexCoord4iv: extern func (target: UInt, v: Int*)
 glMultiTexCoord4s: extern func (target: UInt, s: Short, t: Short, r: Short, q: Short)
 glMultiTexCoord4sv: extern func (target: UInt, v: Short*)
-glLoadTransposeMatrixd: extern func (m[16]: Double)
-glLoadTransposeMatrixf: extern func (m[16]: Float)
-glMultTransposeMatrixd: extern func (m[16]: Double)
-glMultTransposeMatrixf: extern func (m[16]: Float)
 glSampleCoverage: extern func (value: Float, invert: UInt)
 /*
 * GL_ARB_multitexture (ARB extension 1 and OpenGL 1.2.1)
 */
 GL_ARB_multitexture: extern const UInt
 GL_TEXTURE0_ARB,GL_TEXTURE1_ARB,GL_TEXTURE2_ARB,GL_TEXTURE3_ARB,GL_TEXTURE4_ARB,GL_TEXTURE5_ARB,GL_TEXTURE6_ARB,GL_TEXTURE7_ARB,GL_TEXTURE8_ARB,GL_TEXTURE9_ARB,GL_TEXTURE10_ARB,GL_TEXTURE11_ARB,GL_TEXTURE12_ARB,GL_TEXTURE13_ARB,GL_TEXTURE14_ARB,GL_TEXTURE15_ARB,GL_TEXTURE16_ARB,GL_TEXTURE17_ARB,GL_TEXTURE18_ARB,GL_TEXTURE19_ARB,GL_TEXTURE20_ARB,GL_TEXTURE21_ARB,GL_TEXTURE22_ARB,GL_TEXTURE23_ARB,GL_TEXTURE24_ARB,GL_TEXTURE25_ARB,GL_TEXTURE26_ARB,GL_TEXTURE27_ARB,GL_TEXTURE28_ARB,GL_TEXTURE29_ARB,GL_TEXTURE30_ARB,GL_TEXTURE31_ARB,GL_ACTIVE_TEXTURE_ARB,GL_CLIENT_ACTIVE_TEXTURE_ARB,GL_MAX_TEXTURE_UNITS_ARB: extern const UInt
-glActiveTextureARB(GLenum: extern func (texture: UInt)
-glClientActiveTextureARB(GLenum: extern func (texture: UInt)
-glMultiTexCoord1dARB(GLenum: extern func (target: UInt, s: Double)
-glMultiTexCoord1dvARB(GLenum: extern func (target: UInt, v: Double*)
-glMultiTexCoord1fARB(GLenum: extern func (target: UInt, s: Float)
-glMultiTexCoord1fvARB(GLenum: extern func (target: UInt, v: Float*)
-glMultiTexCoord1iARB(GLenum: extern func (target: UInt, s: Int)
-glMultiTexCoord1ivARB(GLenum: extern func (target: UInt, v: Int*)
-glMultiTexCoord1sARB(GLenum: extern func (target: UInt, s: Short)
-glMultiTexCoord1svARB(GLenum: extern func (target: UInt, v: Short*)
-glMultiTexCoord2dARB(GLenum: extern func (target: UInt, s: Double, t: Double)
-glMultiTexCoord2dvARB(GLenum: extern func (target: UInt, v: Double*)
-glMultiTexCoord2fARB(GLenum: extern func (target: UInt, s: Float, t: Float)
-glMultiTexCoord2fvARB(GLenum: extern func (target: UInt, v: Float*)
-glMultiTexCoord2iARB(GLenum: extern func (target: UInt, s: Int, t: Int)
-glMultiTexCoord2ivARB(GLenum: extern func (target: UInt, v: Int*)
-glMultiTexCoord2sARB(GLenum: extern func (target: UInt, s: Short, t: Short)
-glMultiTexCoord2svARB(GLenum: extern func (target: UInt, v: Short*)
-glMultiTexCoord3dARB(GLenum: extern func (target: UInt, s: Double, t: Double, r: Double)
-glMultiTexCoord3dvARB(GLenum: extern func (target: UInt, v: Double*)
-glMultiTexCoord3fARB(GLenum: extern func (target: UInt, s: Float, t: Float, r: Float)
-glMultiTexCoord3fvARB(GLenum: extern func (target: UInt, v: Float*)
-glMultiTexCoord3iARB(GLenum: extern func (target: UInt, s: Int, t: Int, r: Int)
-glMultiTexCoord3ivARB(GLenum: extern func (target: UInt, v: Int*)
-glMultiTexCoord3sARB(GLenum: extern func (target: UInt, s: Short, t: Short, r: Short)
-glMultiTexCoord3svARB(GLenum: extern func (target: UInt, v: Short*)
-glMultiTexCoord4dARB(GLenum: extern func (target: UInt, s: Double, t: Double, r: Double, q: Double)
-glMultiTexCoord4dvARB(GLenum: extern func (target: UInt, v: Double*)
-glMultiTexCoord4fARB(GLenum: extern func (target: UInt, s: Float, t: Float, r: Float, q: Float)
-glMultiTexCoord4fvARB(GLenum: extern func (target: UInt, v: Float*)
-glMultiTexCoord4iARB(GLenum: extern func (target: UInt, s: Int, t: Int, r: Int, q: Int)
-glMultiTexCoord4ivARB(GLenum: extern func (target: UInt, v: Int*)
-glMultiTexCoord4sARB(GLenum: extern func (target: UInt, s: Short, t: Short, r: Short, q: Short)
-glMultiTexCoord4svARB(GLenum: extern func (target: UInt, v: Short*)
+glActiveTextureARB: extern func (texture: UInt)
+glClientActiveTextureARB: extern func (texture: UInt)
+glMultiTexCoord1dARB: extern func (target: UInt, s: Double)
+glMultiTexCoord1dvARB: extern func (target: UInt, v: Double*)
+glMultiTexCoord1fARB: extern func (target: UInt, s: Float)
+glMultiTexCoord1fvARB: extern func (target: UInt, v: Float*)
+glMultiTexCoord1iARB: extern func (target: UInt, s: Int)
+glMultiTexCoord1ivARB: extern func (target: UInt, v: Int*)
+glMultiTexCoord1sARB: extern func (target: UInt, s: Short)
+glMultiTexCoord1svARB: extern func (target: UInt, v: Short*)
+glMultiTexCoord2dARB: extern func (target: UInt, s: Double, t: Double)
+glMultiTexCoord2dvARB: extern func (target: UInt, v: Double*)
+glMultiTexCoord2fARB: extern func (target: UInt, s: Float, t: Float)
+glMultiTexCoord2fvARB: extern func (target: UInt, v: Float*)
+glMultiTexCoord2iARB: extern func (target: UInt, s: Int, t: Int)
+glMultiTexCoord2ivARB: extern func (target: UInt, v: Int*)
+glMultiTexCoord2sARB: extern func (target: UInt, s: Short, t: Short)
+glMultiTexCoord2svARB: extern func (target: UInt, v: Short*)
+glMultiTexCoord3dARB: extern func (target: UInt, s: Double, t: Double, r: Double)
+glMultiTexCoord3dvARB: extern func (target: UInt, v: Double*)
+glMultiTexCoord3fARB: extern func (target: UInt, s: Float, t: Float, r: Float)
+glMultiTexCoord3fvARB: extern func (target: UInt, v: Float*)
+glMultiTexCoord3iARB: extern func (target: UInt, s: Int, t: Int, r: Int)
+glMultiTexCoord3ivARB: extern func (target: UInt, v: Int*)
+glMultiTexCoord3sARB: extern func (target: UInt, s: Short, t: Short, r: Short)
+glMultiTexCoord3svARB: extern func (target: UInt, v: Short*)
+glMultiTexCoord4dARB: extern func (target: UInt, s: Double, t: Double, r: Double, q: Double)
+glMultiTexCoord4dvARB: extern func (target: UInt, v: Double*)
+glMultiTexCoord4fARB: extern func (target: UInt, s: Float, t: Float, r: Float, q: Float)
+glMultiTexCoord4fvARB: extern func (target: UInt, v: Float*)
+glMultiTexCoord4iARB: extern func (target: UInt, s: Int, t: Int, r: Int, q: Int)
+glMultiTexCoord4ivARB: extern func (target: UInt, v: Int*)
+glMultiTexCoord4sARB: extern func (target: UInt, s: Short, t: Short, r: Short, q: Short)
+glMultiTexCoord4svARB: extern func (target: UInt, v: Short*)
 /*
 * Define this token if you want "old-style" header file behaviour (extensions
 * defined in gl.h).  Otherwise, extensions will be included from glext.h.
@@ -673,18 +669,13 @@ glBlendEquationSeparateATI: extern func (modeRGB: UInt, modeA: UInt)
 GL_OES_EGL_image: extern const UInt
 glEGLImageTargetTexture2DOES: extern func (target: UInt, image: Pointer)
 glEGLImageTargetRenderbufferStorageOES: extern func (target: UInt, image: Pointer)
-/**
-** NOTE!!!!!  If you add new functions to this file, or update
-** glext.h be sure to regenerate the gl_mangle.h file.  See comments
-** in that file for details.
-**/
 /**********************************************************************
 * Begin system-specific stuff
 */
 /*
 * End system-specific stuff
 **********************************************************************/
-*/ GLEXT */
+/* GLEXT.H */
 /*
 ** Copyright (c) 2013 The Khronos Group Inc.
 **
@@ -723,57 +714,7 @@ GL_GLEXT_VERSION: extern const UInt
 * Extensions removed: _nomatch_^
 */
 GL_VERSION_1_2,GL_UNSIGNED_BYTE_3_3_2,GL_UNSIGNED_SHORT_4_4_4_4,GL_UNSIGNED_SHORT_5_5_5_1,GL_UNSIGNED_INT_8_8_8_8,GL_UNSIGNED_INT_10_10_10_2,GL_TEXTURE_BINDING_3D,GL_PACK_SKIP_IMAGES,GL_PACK_IMAGE_HEIGHT,GL_UNPACK_SKIP_IMAGES,GL_UNPACK_IMAGE_HEIGHT,GL_TEXTURE_3D,GL_PROXY_TEXTURE_3D,GL_TEXTURE_DEPTH,GL_TEXTURE_WRAP_R,GL_MAX_3D_TEXTURE_SIZE,GL_UNSIGNED_BYTE_2_3_3_REV,GL_UNSIGNED_SHORT_5_6_5,GL_UNSIGNED_SHORT_5_6_5_REV,GL_UNSIGNED_SHORT_4_4_4_4_REV,GL_UNSIGNED_SHORT_1_5_5_5_REV,GL_UNSIGNED_INT_8_8_8_8_REV,GL_UNSIGNED_INT_2_10_10_10_REV,GL_BGR,GL_BGRA,GL_MAX_ELEMENTS_VERTICES,GL_MAX_ELEMENTS_INDICES,GL_CLAMP_TO_EDGE,GL_TEXTURE_MIN_LOD,GL_TEXTURE_MAX_LOD,GL_TEXTURE_BASE_LEVEL,GL_TEXTURE_MAX_LEVEL,GL_SMOOTH_POINT_SIZE_RANGE,GL_SMOOTH_POINT_SIZE_GRANULARITY,GL_SMOOTH_LINE_WIDTH_RANGE,GL_SMOOTH_LINE_WIDTH_GRANULARITY,GL_ALIASED_LINE_WIDTH_RANGE,GL_RESCALE_NORMAL,GL_LIGHT_MODEL_COLOR_CONTROL,GL_SINGLE_COLOR,GL_SEPARATE_SPECULAR_COLOR,GL_ALIASED_POINT_SIZE_RANGE: extern const UInt
-glDrawRangeElements: extern func (mode: UInt, start: UInt, end: UInt, count: Int, type: UInt, indices: Pointer)
-glTexImage3D: extern func (target: UInt, level: Int, internalformat: Int, width: Int, height: Int, depth: Int, border: Int, format: UInt, type: UInt, pixels: Pointer)
-glTexSubImage3D: extern func (target: UInt, level: Int, xoffset: Int, yoffset: Int, zoffset: Int, width: Int, height: Int, depth: Int, format: UInt, type: UInt, pixels: Pointer)
-glCopyTexSubImage3D: extern func (target: UInt, level: Int, xoffset: Int, yoffset: Int, zoffset: Int, x: Int, y: Int, width: Int, height: Int)
 GL_VERSION_1_3,GL_TEXTURE0,GL_TEXTURE1,GL_TEXTURE2,GL_TEXTURE3,GL_TEXTURE4,GL_TEXTURE5,GL_TEXTURE6,GL_TEXTURE7,GL_TEXTURE8,GL_TEXTURE9,GL_TEXTURE10,GL_TEXTURE11,GL_TEXTURE12,GL_TEXTURE13,GL_TEXTURE14,GL_TEXTURE15,GL_TEXTURE16,GL_TEXTURE17,GL_TEXTURE18,GL_TEXTURE19,GL_TEXTURE20,GL_TEXTURE21,GL_TEXTURE22,GL_TEXTURE23,GL_TEXTURE24,GL_TEXTURE25,GL_TEXTURE26,GL_TEXTURE27,GL_TEXTURE28,GL_TEXTURE29,GL_TEXTURE30,GL_TEXTURE31,GL_ACTIVE_TEXTURE,GL_MULTISAMPLE,GL_SAMPLE_ALPHA_TO_COVERAGE,GL_SAMPLE_ALPHA_TO_ONE,GL_SAMPLE_COVERAGE,GL_SAMPLE_BUFFERS,GL_SAMPLES,GL_SAMPLE_COVERAGE_VALUE,GL_SAMPLE_COVERAGE_INVERT,GL_TEXTURE_CUBE_MAP,GL_TEXTURE_BINDING_CUBE_MAP,GL_TEXTURE_CUBE_MAP_POSITIVE_X,GL_TEXTURE_CUBE_MAP_NEGATIVE_X,GL_TEXTURE_CUBE_MAP_POSITIVE_Y,GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,GL_TEXTURE_CUBE_MAP_POSITIVE_Z,GL_TEXTURE_CUBE_MAP_NEGATIVE_Z,GL_PROXY_TEXTURE_CUBE_MAP,GL_MAX_CUBE_MAP_TEXTURE_SIZE,GL_COMPRESSED_RGB,GL_COMPRESSED_RGBA,GL_TEXTURE_COMPRESSION_HINT,GL_TEXTURE_COMPRESSED_IMAGE_SIZE,GL_TEXTURE_COMPRESSED,GL_NUM_COMPRESSED_TEXTURE_FORMATS,GL_COMPRESSED_TEXTURE_FORMATS,GL_CLAMP_TO_BORDER,GL_CLIENT_ACTIVE_TEXTURE,GL_MAX_TEXTURE_UNITS,GL_TRANSPOSE_MODELVIEW_MATRIX,GL_TRANSPOSE_PROJECTION_MATRIX,GL_TRANSPOSE_TEXTURE_MATRIX,GL_TRANSPOSE_COLOR_MATRIX,GL_MULTISAMPLE_BIT,GL_NORMAL_MAP,GL_REFLECTION_MAP,GL_COMPRESSED_ALPHA,GL_COMPRESSED_LUMINANCE,GL_COMPRESSED_LUMINANCE_ALPHA,GL_COMPRESSED_INTENSITY,GL_COMBINE,GL_COMBINE_RGB,GL_COMBINE_ALPHA,GL_SOURCE0_RGB,GL_SOURCE1_RGB,GL_SOURCE2_RGB,GL_SOURCE0_ALPHA,GL_SOURCE1_ALPHA,GL_SOURCE2_ALPHA,GL_OPERAND0_RGB,GL_OPERAND1_RGB,GL_OPERAND2_RGB,GL_OPERAND0_ALPHA,GL_OPERAND1_ALPHA,GL_OPERAND2_ALPHA,GL_RGB_SCALE,GL_ADD_SIGNED,GL_INTERPOLATE,GL_SUBTRACT,GL_CONSTANT,GL_PRIMARY_COLOR,GL_PREVIOUS,GL_DOT3_RGB,GL_DOT3_RGBA: extern const UInt
-glActiveTexture: extern func (texture: UInt)
-glSampleCoverage: extern func (value: Float, invert: UInt)
-glCompressedTexImage3D: extern func (target: UInt, level: Int, internalformat: UInt, width: Int, height: Int, depth: Int, border: Int, imageSize: Int, data: Pointer)
-glCompressedTexImage2D: extern func (target: UInt, level: Int, internalformat: UInt, width: Int, height: Int, border: Int, imageSize: Int, data: Pointer)
-glCompressedTexImage1D: extern func (target: UInt, level: Int, internalformat: UInt, width: Int, border: Int, imageSize: Int, data: Pointer)
-glCompressedTexSubImage3D: extern func (target: UInt, level: Int, xoffset: Int, yoffset: Int, zoffset: Int, width: Int, height: Int, depth: Int, format: UInt, imageSize: Int, data: Pointer)
-glCompressedTexSubImage2D: extern func (target: UInt, level: Int, xoffset: Int, yoffset: Int, width: Int, height: Int, format: UInt, imageSize: Int, data: Pointer)
-glCompressedTexSubImage1D: extern func (target: UInt, level: Int, xoffset: Int, width: Int, format: UInt, imageSize: Int, data: Pointer)
-glGetCompressedTexImage: extern func (target: UInt, level: Int, img: Pointer)
-glClientActiveTexture: extern func (texture: UInt)
-glMultiTexCoord1d: extern func (target: UInt, s: Double)
-glMultiTexCoord1dv: extern func (target: UInt, v: Double*)
-glMultiTexCoord1f: extern func (target: UInt, s: Float)
-glMultiTexCoord1fv: extern func (target: UInt, v: Float*)
-glMultiTexCoord1i: extern func (target: UInt, s: Int)
-glMultiTexCoord1iv: extern func (target: UInt, v: Int*)
-glMultiTexCoord1s: extern func (target: UInt, s: Short)
-glMultiTexCoord1sv: extern func (target: UInt, v: Short*)
-glMultiTexCoord2d: extern func (target: UInt, s: Double, t: Double)
-glMultiTexCoord2dv: extern func (target: UInt, v: Double*)
-glMultiTexCoord2f: extern func (target: UInt, s: Float, t: Float)
-glMultiTexCoord2fv: extern func (target: UInt, v: Float*)
-glMultiTexCoord2i: extern func (target: UInt, s: Int, t: Int)
-glMultiTexCoord2iv: extern func (target: UInt, v: Int*)
-glMultiTexCoord2s: extern func (target: UInt, s: Short, t: Short)
-glMultiTexCoord2sv: extern func (target: UInt, v: Short*)
-glMultiTexCoord3d: extern func (target: UInt, s: Double, t: Double, r: Double)
-glMultiTexCoord3dv: extern func (target: UInt, v: Double*)
-glMultiTexCoord3f: extern func (target: UInt, s: Float, t: Float, r: Float)
-glMultiTexCoord3fv: extern func (target: UInt, v: Float*)
-glMultiTexCoord3i: extern func (target: UInt, s: Int, t: Int, r: Int)
-glMultiTexCoord3iv: extern func (target: UInt, v: Int*)
-glMultiTexCoord3s: extern func (target: UInt, s: Short, t: Short, r: Short)
-glMultiTexCoord3sv: extern func (target: UInt, v: Short*)
-glMultiTexCoord4d: extern func (target: UInt, s: Double, t: Double, r: Double, q: Double)
-glMultiTexCoord4dv: extern func (target: UInt, v: Double*)
-glMultiTexCoord4f: extern func (target: UInt, s: Float, t: Float, r: Float, q: Float)
-glMultiTexCoord4fv: extern func (target: UInt, v: Float*)
-glMultiTexCoord4i: extern func (target: UInt, s: Int, t: Int, r: Int, q: Int)
-glMultiTexCoord4iv: extern func (target: UInt, v: Int*)
-glMultiTexCoord4s: extern func (target: UInt, s: Short, t: Short, r: Short, q: Short)
-glMultiTexCoord4sv: extern func (target: UInt, v: Short*)
-glLoadTransposeMatrixf: extern func (m: Float*)
-glLoadTransposeMatrixd: extern func (m: Double*)
-glMultTransposeMatrixf: extern func (m: Float*)
-glMultTransposeMatrixd: extern func (m: Double*)
 GL_VERSION_1_4,GL_BLEND_DST_RGB,GL_BLEND_SRC_RGB,GL_BLEND_DST_ALPHA,GL_BLEND_SRC_ALPHA,GL_POINT_FADE_THRESHOLD_SIZE,GL_DEPTH_COMPONENT16,GL_DEPTH_COMPONENT24,GL_DEPTH_COMPONENT32,GL_MIRRORED_REPEAT,GL_MAX_TEXTURE_LOD_BIAS,GL_TEXTURE_LOD_BIAS,GL_INCR_WRAP,GL_DECR_WRAP,GL_TEXTURE_DEPTH_SIZE,GL_TEXTURE_COMPARE_MODE,GL_TEXTURE_COMPARE_FUNC,GL_POINT_SIZE_MIN,GL_POINT_SIZE_MAX,GL_POINT_DISTANCE_ATTENUATION,GL_GENERATE_MIPMAP,GL_GENERATE_MIPMAP_HINT,GL_FOG_COORDINATE_SOURCE,GL_FOG_COORDINATE,GL_FRAGMENT_DEPTH,GL_CURRENT_FOG_COORDINATE,GL_FOG_COORDINATE_ARRAY_TYPE,GL_FOG_COORDINATE_ARRAY_STRIDE,GL_FOG_COORDINATE_ARRAY_POINTER,GL_FOG_COORDINATE_ARRAY,GL_COLOR_SUM,GL_CURRENT_SECONDARY_COLOR,GL_SECONDARY_COLOR_ARRAY_SIZE,GL_SECONDARY_COLOR_ARRAY_TYPE,GL_SECONDARY_COLOR_ARRAY_STRIDE,GL_SECONDARY_COLOR_ARRAY_POINTER,GL_SECONDARY_COLOR_ARRAY,GL_TEXTURE_FILTER_CONTROL,GL_DEPTH_TEXTURE_MODE,GL_COMPARE_R_TO_TEXTURE,GL_FUNC_ADD,GL_FUNC_SUBTRACT,GL_FUNC_REVERSE_SUBTRACT,GL_MIN,GL_MAX,GL_CONSTANT_COLOR,GL_ONE_MINUS_CONSTANT_COLOR,GL_CONSTANT_ALPHA,GL_ONE_MINUS_CONSTANT_ALPHA: extern const UInt
 glBlendFuncSeparate: extern func (sfactorRGB: UInt, dfactorRGB: UInt, sfactorAlpha: UInt, dfactorAlpha: UInt)
 glMultiDrawArrays: extern func (mode: UInt, first: Int*, count: Int*, drawcount: Int)
@@ -820,8 +761,6 @@ glWindowPos3i: extern func (x: Int, y: Int, z: Int)
 glWindowPos3iv: extern func (v: Int*)
 glWindowPos3s: extern func (x: Short, y: Short, z: Short)
 glWindowPos3sv: extern func (v: Short*)
-glBlendColor: extern func (red: Float, green: Float, blue: Float, alpha: Float)
-glBlendEquation: extern func (mode: UInt)
 GL_VERSION_1_5: extern const UInt
 GL_BUFFER_SIZE,GL_BUFFER_USAGE,GL_QUERY_COUNTER_BITS,GL_CURRENT_QUERY,GL_QUERY_RESULT,GL_QUERY_RESULT_AVAILABLE,GL_ARRAY_BUFFER,GL_ELEMENT_ARRAY_BUFFER,GL_ARRAY_BUFFER_BINDING,GL_ELEMENT_ARRAY_BUFFER_BINDING,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,GL_READ_ONLY,GL_WRITE_ONLY,GL_READ_WRITE,GL_BUFFER_ACCESS,GL_BUFFER_MAPPED,GL_BUFFER_MAP_POINTER,GL_STREAM_DRAW,GL_STREAM_READ,GL_STREAM_COPY,GL_STATIC_DRAW,GL_STATIC_READ,GL_STATIC_COPY,GL_DYNAMIC_DRAW,GL_DYNAMIC_READ,GL_DYNAMIC_COPY,GL_SAMPLES_PASSED,GL_SRC1_ALPHA,GL_VERTEX_ARRAY_BUFFER_BINDING,GL_NORMAL_ARRAY_BUFFER_BINDING,GL_COLOR_ARRAY_BUFFER_BINDING,GL_INDEX_ARRAY_BUFFER_BINDING,GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING,GL_EDGE_FLAG_ARRAY_BUFFER_BINDING,GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING,GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING,GL_WEIGHT_ARRAY_BUFFER_BINDING,GL_FOG_COORD_SRC,GL_FOG_COORD,GL_CURRENT_FOG_COORD,GL_FOG_COORD_ARRAY_TYPE,GL_FOG_COORD_ARRAY_STRIDE,GL_FOG_COORD_ARRAY_POINTER,GL_FOG_COORD_ARRAY,GL_FOG_COORD_ARRAY_BUFFER_BINDING,GL_SRC0_RGB,GL_SRC1_RGB,GL_SRC2_RGB,GL_SRC0_ALPHA,GL_SRC2_ALPHA: extern const UInt
 glGenQueries: extern func (n: Int, ids: UInt*)
@@ -848,7 +787,7 @@ GL_BLEND_EQUATION_RGB,GL_VERTEX_ATTRIB_ARRAY_ENABLED,GL_VERTEX_ATTRIB_ARRAY_SIZE
 glBlendEquationSeparate: extern func (modeRGB: UInt, modeAlpha: UInt)
 glDrawBuffers: extern func (n: Int, bufs: UInt*)
 glStencilOpSeparate: extern func (face: UInt, sfail: UInt, dpfail: UInt, dppass: UInt)
-glStencilFuncSeparate: extern func (face: UInt, func: UInt, ref: Int, mask: UInt)
+glStencilFuncSeparate: extern func (face: UInt, function: UInt, ref: Int, mask: UInt)
 glStencilMaskSeparate: extern func (face: UInt, mask: UInt)
 glAttachShader: extern func (program: UInt, shader: UInt)
 glBindAttribLocation: extern func (program: UInt, index: UInt, name: Char*)
@@ -954,14 +893,14 @@ glEnablei: extern func (target: UInt, index: UInt)
 glDisablei: extern func (target: UInt, index: UInt)
 glIsEnabledi: extern func (target: UInt, index: UInt) -> UInt
 glBeginTransformFeedback: extern func (primitiveMode: UInt)
-glEndTransformFeedback: extern func 
+glEndTransformFeedback: extern func
 glBindBufferRange: extern func (target: UInt, index: UInt, buffer: UInt, offset: Int32, size: Long)
 glBindBufferBase: extern func (target: UInt, index: UInt, buffer: UInt)
 glTransformFeedbackVaryings: extern func (program: UInt, count: Int, varyings: Char*, bufferMode: UInt)
 glGetTransformFeedbackVarying: extern func (program: UInt, index: UInt, bufSize: Int, length: Int*, size: Int*, type: UInt*, name: Char*)
 glClampColor: extern func (target: UInt, clamp: UInt)
 glBeginConditionalRender: extern func (id: UInt, mode: UInt)
-glEndConditionalRender: extern func 
+glEndConditionalRender: extern func
 glVertexAttribIPointer: extern func (index: UInt, size: Int, type: UInt, stride: Int, pointer: Pointer)
 glGetVertexAttribIiv: extern func (index: UInt, pname: UInt, params: Int*)
 glGetVertexAttribIuiv: extern func (index: UInt, pname: UInt, params: UInt*)
@@ -1168,15 +1107,15 @@ glBindTransformFeedback: extern func (target: UInt, id: UInt)
 glDeleteTransformFeedbacks: extern func (n: Int, ids: UInt*)
 glGenTransformFeedbacks: extern func (n: Int, ids: UInt*)
 glIsTransformFeedback: extern func (id: UInt) -> UInt
-glPauseTransformFeedback: extern func 
-glResumeTransformFeedback: extern func 
+glPauseTransformFeedback: extern func
+glResumeTransformFeedback: extern func
 glDrawTransformFeedback: extern func (mode: UInt, id: UInt)
 glDrawTransformFeedbackStream: extern func (mode: UInt, id: UInt, stream: UInt)
 glBeginQueryIndexed: extern func (target: UInt, index: UInt, id: UInt)
 glEndQueryIndexed: extern func (target: UInt, index: UInt)
 glGetQueryIndexediv: extern func (target: UInt, index: UInt, pname: UInt, params: Int*)
 GL_VERSION_4_1,GL_FIXED,GL_IMPLEMENTATION_COLOR_READ_TYPE,GL_IMPLEMENTATION_COLOR_READ_FORMAT,GL_LOW_FLOAT,GL_MEDIUM_FLOAT,GL_HIGH_FLOAT,GL_LOW_INT,GL_MEDIUM_INT,GL_HIGH_INT,GL_SHADER_COMPILER,GL_SHADER_BINARY_FORMATS,GL_NUM_SHADER_BINARY_FORMATS,GL_MAX_VERTEX_UNIFORM_VECTORS,GL_MAX_VARYING_VECTORS,GL_MAX_FRAGMENT_UNIFORM_VECTORS,GL_RGB565,GL_PROGRAM_BINARY_RETRIEVABLE_HINT,GL_PROGRAM_BINARY_LENGTH,GL_NUM_PROGRAM_BINARY_FORMATS,GL_PROGRAM_BINARY_FORMATS,GL_VERTEX_SHADER_BIT,GL_FRAGMENT_SHADER_BIT,GL_GEOMETRY_SHADER_BIT,GL_TESS_CONTROL_SHADER_BIT,GL_TESS_EVALUATION_SHADER_BIT,GL_ALL_SHADER_BITS,GL_PROGRAM_SEPARABLE,GL_ACTIVE_PROGRAM,GL_PROGRAM_PIPELINE_BINDING,GL_MAX_VIEWPORTS,GL_VIEWPORT_SUBPIXEL_BITS,GL_VIEWPORT_BOUNDS_RANGE,GL_LAYER_PROVOKING_VERTEX,GL_VIEWPORT_INDEX_PROVOKING_VERTEX,GL_UNDEFINED_VERTEX: extern const UInt
-glReleaseShaderCompiler: extern func 
+glReleaseShaderCompiler: extern func
 glShaderBinary: extern func (count: Int, shaders: UInt*, binaryformat: UInt, binary: Pointer, length: Int)
 glGetShaderPrecisionFormat: extern func (shadertype: UInt, precisiontype: UInt, range: Int*, precision: Int*)
 glDepthRangef: extern func (n: Float, f: Float)
@@ -1317,7 +1256,7 @@ glDebugMessageInsert: extern func (source: UInt, type: UInt, id: UInt, severity:
 glDebugMessageCallback: extern func (callback: Pointer, userParam: Pointer)
 glGetDebugMessageLog: extern func (count: UInt, bufSize: Int, sources: UInt*, types: UInt*, ids: UInt*, severities: UInt*, lengths: Int*, messageLog: Char*) -> UInt
 glPushDebugGroup: extern func (source: UInt, id: UInt, length: Int, message: Char*)
-glPopDebugGroup: extern func 
+glPopDebugGroup: extern func
 glObjectLabel: extern func (identifier: UInt, name: UInt, length: Int, label: Char*)
 glGetObjectLabel: extern func (identifier: UInt, name: UInt, bufSize: Int, length: Int*, label: Char*)
 glObjectPtrLabel: extern func (ptr: Pointer, length: Int, label: Char*)
@@ -1357,10 +1296,10 @@ glGetVertexAttribLui64vARB: extern func (index: UInt, pname: UInt, params: UInt6
 GL_ARB_blend_func_extended: extern const UInt
 GL_ARB_buffer_storage: extern const UInt
 GL_ARB_cl_event: extern const UInt
-_cl_context_OOC: cover from _cl_context
-_cl_event_OOC: cover from _cl_event
+/*_cl_context_OOC: cover from _cl_context*/
+/*_cl_event_OOC: cover from _cl_event*/
 GL_SYNC_CL_EVENT_ARB,GL_SYNC_CL_EVENT_COMPLETE_ARB: extern const UInt
-glCreateSyncFromCLeventARB: extern func (context: _cl_context_OOC*, event: _cl_event_OOC*, flags: UInt) -> Pointer
+/*glCreateSyncFromCLeventARB: extern func (context: _cl_context_OOC*, event: _cl_event_OOC*, flags: UInt) -> Pointer*/
 GL_ARB_clear_buffer_object: extern const UInt
 GL_ARB_clear_texture: extern const UInt
 GL_ARB_color_buffer_float,GL_RGBA_FLOAT_MODE_ARB,GL_CLAMP_VERTEX_COLOR_ARB,GL_CLAMP_FRAGMENT_COLOR_ARB,GL_CLAMP_READ_COLOR_ARB,GL_FIXED_ONLY_ARB: extern const UInt
@@ -1436,38 +1375,6 @@ GL_ARB_half_float_pixel: extern const UInt
 GL_HALF_FLOAT_ARB: extern const UInt
 GL_ARB_half_float_vertex: extern const UInt
 GL_ARB_imaging,GL_BLEND_COLOR,GL_BLEND_EQUATION,GL_CONVOLUTION_1D,GL_CONVOLUTION_2D,GL_SEPARABLE_2D,GL_CONVOLUTION_BORDER_MODE,GL_CONVOLUTION_FILTER_SCALE,GL_CONVOLUTION_FILTER_BIAS,GL_REDUCE,GL_CONVOLUTION_FORMAT,GL_CONVOLUTION_WIDTH,GL_CONVOLUTION_HEIGHT,GL_MAX_CONVOLUTION_WIDTH,GL_MAX_CONVOLUTION_HEIGHT,GL_POST_CONVOLUTION_RED_SCALE,GL_POST_CONVOLUTION_GREEN_SCALE,GL_POST_CONVOLUTION_BLUE_SCALE,GL_POST_CONVOLUTION_ALPHA_SCALE,GL_POST_CONVOLUTION_RED_BIAS,GL_POST_CONVOLUTION_GREEN_BIAS,GL_POST_CONVOLUTION_BLUE_BIAS,GL_POST_CONVOLUTION_ALPHA_BIAS,GL_HISTOGRAM,GL_PROXY_HISTOGRAM,GL_HISTOGRAM_WIDTH,GL_HISTOGRAM_FORMAT,GL_HISTOGRAM_RED_SIZE,GL_HISTOGRAM_GREEN_SIZE,GL_HISTOGRAM_BLUE_SIZE,GL_HISTOGRAM_ALPHA_SIZE,GL_HISTOGRAM_LUMINANCE_SIZE,GL_HISTOGRAM_SINK,GL_MINMAX,GL_MINMAX_FORMAT,GL_MINMAX_SINK,GL_TABLE_TOO_LARGE,GL_COLOR_MATRIX,GL_COLOR_MATRIX_STACK_DEPTH,GL_MAX_COLOR_MATRIX_STACK_DEPTH,GL_POST_COLOR_MATRIX_RED_SCALE,GL_POST_COLOR_MATRIX_GREEN_SCALE,GL_POST_COLOR_MATRIX_BLUE_SCALE,GL_POST_COLOR_MATRIX_ALPHA_SCALE,GL_POST_COLOR_MATRIX_RED_BIAS,GL_POST_COLOR_MATRIX_GREEN_BIAS,GL_POST_COLOR_MATRIX_BLUE_BIAS,GL_POST_COLOR_MATRIX_ALPHA_BIAS,GL_COLOR_TABLE,GL_POST_CONVOLUTION_COLOR_TABLE,GL_POST_COLOR_MATRIX_COLOR_TABLE,GL_PROXY_COLOR_TABLE,GL_PROXY_POST_CONVOLUTION_COLOR_TABLE,GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE,GL_COLOR_TABLE_SCALE,GL_COLOR_TABLE_BIAS,GL_COLOR_TABLE_FORMAT,GL_COLOR_TABLE_WIDTH,GL_COLOR_TABLE_RED_SIZE,GL_COLOR_TABLE_GREEN_SIZE,GL_COLOR_TABLE_BLUE_SIZE,GL_COLOR_TABLE_ALPHA_SIZE,GL_COLOR_TABLE_LUMINANCE_SIZE,GL_COLOR_TABLE_INTENSITY_SIZE,GL_CONSTANT_BORDER,GL_REPLICATE_BORDER,GL_CONVOLUTION_BORDER_COLOR: extern const UInt
-glColorTable: extern func (target: UInt, internalformat: UInt, width: Int, format: UInt, type: UInt, table: Pointer)
-glColorTableParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glColorTableParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glCopyColorTable: extern func (target: UInt, internalformat: UInt, x: Int, y: Int, width: Int)
-glGetColorTable: extern func (target: UInt, format: UInt, type: UInt, table: Pointer)
-glGetColorTableParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glGetColorTableParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glColorSubTable: extern func (target: UInt, start: Int, count: Int, format: UInt, type: UInt, data: Pointer)
-glCopyColorSubTable: extern func (target: UInt, start: Int, x: Int, y: Int, width: Int)
-glConvolutionFilter1D: extern func (target: UInt, internalformat: UInt, width: Int, format: UInt, type: UInt, image: Pointer)
-glConvolutionFilter2D: extern func (target: UInt, internalformat: UInt, width: Int, height: Int, format: UInt, type: UInt, image: Pointer)
-glConvolutionParameterf: extern func (target: UInt, pname: UInt, params: Float)
-glConvolutionParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glConvolutionParameteri: extern func (target: UInt, pname: UInt, params: Int)
-glConvolutionParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glCopyConvolutionFilter1D: extern func (target: UInt, internalformat: UInt, x: Int, y: Int, width: Int)
-glCopyConvolutionFilter2D: extern func (target: UInt, internalformat: UInt, x: Int, y: Int, width: Int, height: Int)
-glGetConvolutionFilter: extern func (target: UInt, format: UInt, type: UInt, image: Pointer)
-glGetConvolutionParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glGetConvolutionParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glGetSeparableFilter: extern func (target: UInt, format: UInt, type: UInt, row: Pointer, column: Pointer, span: Pointer)
-glSeparableFilter2D: extern func (target: UInt, internalformat: UInt, width: Int, height: Int, format: UInt, type: UInt, row: Pointer, column: Pointer)
-glGetHistogram: extern func (target: UInt, reset: UInt, format: UInt, type: UInt, values: Pointer)
-glGetHistogramParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glGetHistogramParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glGetMinmax: extern func (target: UInt, reset: UInt, format: UInt, type: UInt, values: Pointer)
-glGetMinmaxParameterfv: extern func (target: UInt, pname: UInt, params: Float*)
-glGetMinmaxParameteriv: extern func (target: UInt, pname: UInt, params: Int*)
-glHistogram: extern func (target: UInt, width: Int, internalformat: UInt, sink: UInt)
-glMinmax: extern func (target: UInt, internalformat: UInt, sink: UInt)
-glResetHistogram: extern func (target: UInt)
-glResetMinmax: extern func (target: UInt)
 GL_ARB_indirect_parameters,GL_PARAMETER_BUFFER_ARB,GL_PARAMETER_BUFFER_BINDING_ARB: extern const UInt
 glMultiDrawArraysIndirectCountARB: extern func (mode: UInt, indirect: Int32, drawcount: Int32, maxdrawcount: Int, stride: Int)
 glMultiDrawElementsIndirectCountARB: extern func (mode: UInt, type: UInt, indirect: Int32, drawcount: Int32, maxdrawcount: Int, stride: Int)
@@ -1489,40 +1396,6 @@ GL_ARB_multi_draw_indirect: extern const UInt
 GL_ARB_multisample,GL_MULTISAMPLE_ARB,GL_SAMPLE_ALPHA_TO_COVERAGE_ARB,GL_SAMPLE_ALPHA_TO_ONE_ARB,GL_SAMPLE_COVERAGE_ARB,GL_SAMPLE_BUFFERS_ARB,GL_SAMPLES_ARB,GL_SAMPLE_COVERAGE_VALUE_ARB,GL_SAMPLE_COVERAGE_INVERT_ARB,GL_MULTISAMPLE_BIT_ARB: extern const UInt
 glSampleCoverageARB: extern func (value: Float, invert: UInt)
 GL_ARB_multitexture,GL_TEXTURE0_ARB,GL_TEXTURE1_ARB,GL_TEXTURE2_ARB,GL_TEXTURE3_ARB,GL_TEXTURE4_ARB,GL_TEXTURE5_ARB,GL_TEXTURE6_ARB,GL_TEXTURE7_ARB,GL_TEXTURE8_ARB,GL_TEXTURE9_ARB,GL_TEXTURE10_ARB,GL_TEXTURE11_ARB,GL_TEXTURE12_ARB,GL_TEXTURE13_ARB,GL_TEXTURE14_ARB,GL_TEXTURE15_ARB,GL_TEXTURE16_ARB,GL_TEXTURE17_ARB,GL_TEXTURE18_ARB,GL_TEXTURE19_ARB,GL_TEXTURE20_ARB,GL_TEXTURE21_ARB,GL_TEXTURE22_ARB,GL_TEXTURE23_ARB,GL_TEXTURE24_ARB,GL_TEXTURE25_ARB,GL_TEXTURE26_ARB,GL_TEXTURE27_ARB,GL_TEXTURE28_ARB,GL_TEXTURE29_ARB,GL_TEXTURE30_ARB,GL_TEXTURE31_ARB,GL_ACTIVE_TEXTURE_ARB,GL_CLIENT_ACTIVE_TEXTURE_ARB,GL_MAX_TEXTURE_UNITS_ARB: extern const UInt
-glActiveTextureARB: extern func (texture: UInt)
-glClientActiveTextureARB: extern func (texture: UInt)
-glMultiTexCoord1dARB: extern func (target: UInt, s: Double)
-glMultiTexCoord1dvARB: extern func (target: UInt, v: Double*)
-glMultiTexCoord1fARB: extern func (target: UInt, s: Float)
-glMultiTexCoord1fvARB: extern func (target: UInt, v: Float*)
-glMultiTexCoord1iARB: extern func (target: UInt, s: Int)
-glMultiTexCoord1ivARB: extern func (target: UInt, v: Int*)
-glMultiTexCoord1sARB: extern func (target: UInt, s: Short)
-glMultiTexCoord1svARB: extern func (target: UInt, v: Short*)
-glMultiTexCoord2dARB: extern func (target: UInt, s: Double, t: Double)
-glMultiTexCoord2dvARB: extern func (target: UInt, v: Double*)
-glMultiTexCoord2fARB: extern func (target: UInt, s: Float, t: Float)
-glMultiTexCoord2fvARB: extern func (target: UInt, v: Float*)
-glMultiTexCoord2iARB: extern func (target: UInt, s: Int, t: Int)
-glMultiTexCoord2ivARB: extern func (target: UInt, v: Int*)
-glMultiTexCoord2sARB: extern func (target: UInt, s: Short, t: Short)
-glMultiTexCoord2svARB: extern func (target: UInt, v: Short*)
-glMultiTexCoord3dARB: extern func (target: UInt, s: Double, t: Double, r: Double)
-glMultiTexCoord3dvARB: extern func (target: UInt, v: Double*)
-glMultiTexCoord3fARB: extern func (target: UInt, s: Float, t: Float, r: Float)
-glMultiTexCoord3fvARB: extern func (target: UInt, v: Float*)
-glMultiTexCoord3iARB: extern func (target: UInt, s: Int, t: Int, r: Int)
-glMultiTexCoord3ivARB: extern func (target: UInt, v: Int*)
-glMultiTexCoord3sARB: extern func (target: UInt, s: Short, t: Short, r: Short)
-glMultiTexCoord3svARB: extern func (target: UInt, v: Short*)
-glMultiTexCoord4dARB: extern func (target: UInt, s: Double, t: Double, r: Double, q: Double)
-glMultiTexCoord4dvARB: extern func (target: UInt, v: Double*)
-glMultiTexCoord4fARB: extern func (target: UInt, s: Float, t: Float, r: Float, q: Float)
-glMultiTexCoord4fvARB: extern func (target: UInt, v: Float*)
-glMultiTexCoord4iARB: extern func (target: UInt, s: Int, t: Int, r: Int, q: Int)
-glMultiTexCoord4ivARB: extern func (target: UInt, v: Int*)
-glMultiTexCoord4sARB: extern func (target: UInt, s: Short, t: Short, r: Short, q: Short)
-glMultiTexCoord4svARB: extern func (target: UInt, v: Short*)
 GL_ARB_occlusion_query,GL_QUERY_COUNTER_BITS_ARB,GL_CURRENT_QUERY_ARB,GL_QUERY_RESULT_ARB,GL_QUERY_RESULT_AVAILABLE_ARB,GL_SAMPLES_PASSED_ARB: extern const UInt
 glGenQueriesARB: extern func (n: Int, ids: UInt*)
 glDeleteQueriesARB: extern func (n: Int, ids: UInt*)
@@ -1811,7 +1684,7 @@ glVertex4bvOES: extern func (coords: Char*)
 GL_OES_compressed_paletted_texture,GL_PALETTE4_RGB8_OES,GL_PALETTE4_RGBA8_OES,GL_PALETTE4_R5_G6_B5_OES,GL_PALETTE4_RGBA4_OES,GL_PALETTE4_RGB5_A1_OES,GL_PALETTE8_RGB8_OES,GL_PALETTE8_RGBA8_OES,GL_PALETTE8_R5_G6_B5_OES,GL_PALETTE8_RGBA4_OES,GL_PALETTE8_RGB5_A1_OES: extern const UInt
 GL_OES_fixed_point: extern const UInt
 GL_FIXED_OES: extern const UInt
-glAlphaFuncxOES: extern func (func: UInt, ref: Int)
+glAlphaFuncxOES: extern func (function: UInt, ref: Int)
 glClearColorxOES: extern func (red: Int, green: Int, blue: Int, alpha: Int)
 glClearDepthxOES: extern func (depth: Int)
 glClipPlanexOES: extern func (plane: UInt, equation: Int*)
@@ -2051,8 +1924,8 @@ GL_ATI_fragment_shader,GL_FRAGMENT_SHADER_ATI,GL_REG_0_ATI,GL_REG_1_ATI,GL_REG_2
 glGenFragmentShadersATI: extern func (range: UInt) -> UInt
 glBindFragmentShaderATI: extern func (id: UInt)
 glDeleteFragmentShaderATI: extern func (id: UInt)
-glBeginFragmentShaderATI: extern func 
-glEndFragmentShaderATI: extern func 
+glBeginFragmentShaderATI: extern func
+glEndFragmentShaderATI: extern func
 glPassTexCoordATI: extern func (dst: UInt, coord: UInt, swizzle: UInt)
 glSampleMapATI: extern func (dst: UInt, interp: UInt, swizzle: UInt)
 glColorFragmentOp1ATI: extern func (op: UInt, dst: UInt, dstMask: UInt, dstMod: UInt, arg1: UInt, arg1Rep: UInt, arg1Mod: UInt)
@@ -2164,7 +2037,7 @@ glColorSubTableEXT: extern func (target: UInt, start: Int, count: Int, format: U
 glCopyColorSubTableEXT: extern func (target: UInt, start: Int, x: Int, y: Int, width: Int)
 GL_EXT_compiled_vertex_array,GL_ARRAY_ELEMENT_LOCK_FIRST_EXT,GL_ARRAY_ELEMENT_LOCK_COUNT_EXT: extern const UInt
 glLockArraysEXT: extern func (first: Int, count: Int)
-glUnlockArraysEXT: extern func 
+glUnlockArraysEXT: extern func
 GL_EXT_convolution,GL_CONVOLUTION_1D_EXT,GL_CONVOLUTION_2D_EXT,GL_SEPARABLE_2D_EXT,GL_CONVOLUTION_BORDER_MODE_EXT,GL_CONVOLUTION_FILTER_SCALE_EXT,GL_CONVOLUTION_FILTER_BIAS_EXT,GL_REDUCE_EXT,GL_CONVOLUTION_FORMAT_EXT,GL_CONVOLUTION_WIDTH_EXT,GL_CONVOLUTION_HEIGHT_EXT,GL_MAX_CONVOLUTION_WIDTH_EXT,GL_MAX_CONVOLUTION_HEIGHT_EXT,GL_POST_CONVOLUTION_RED_SCALE_EXT,GL_POST_CONVOLUTION_GREEN_SCALE_EXT,GL_POST_CONVOLUTION_BLUE_SCALE_EXT,GL_POST_CONVOLUTION_ALPHA_SCALE_EXT,GL_POST_CONVOLUTION_RED_BIAS_EXT,GL_POST_CONVOLUTION_GREEN_BIAS_EXT,GL_POST_CONVOLUTION_BLUE_BIAS_EXT,GL_POST_CONVOLUTION_ALPHA_BIAS_EXT: extern const UInt
 glConvolutionFilter1DEXT: extern func (target: UInt, internalformat: UInt, width: Int, format: UInt, type: UInt, image: Pointer)
 glConvolutionFilter2DEXT: extern func (target: UInt, internalformat: UInt, width: Int, height: Int, format: UInt, type: UInt, image: Pointer)
@@ -2217,7 +2090,7 @@ glGetObjectLabelEXT: extern func (type: UInt, object: UInt, bufSize: Int, length
 GL_EXT_debug_marker: extern const UInt
 glInsertEventMarkerEXT: extern func (length: Int, marker: Char*)
 glPushGroupMarkerEXT: extern func (length: Int, marker: Char*)
-glPopGroupMarkerEXT: extern func 
+glPopGroupMarkerEXT: extern func
 GL_EXT_depth_bounds_test,GL_DEPTH_BOUNDS_TEST_EXT,GL_DEPTH_BOUNDS_EXT: extern const UInt
 glDepthBoundsEXT: extern func (zmin: Double, zmax: Double)
 GL_EXT_direct_state_access,GL_PROGRAM_MATRIX_EXT,GL_TRANSPOSE_PROGRAM_MATRIX_EXT,GL_PROGRAM_MATRIX_STACK_DEPTH_EXT: extern const UInt
@@ -2543,7 +2416,7 @@ glResetHistogramEXT: extern func (target: UInt)
 glResetMinmaxEXT: extern func (target: UInt)
 GL_EXT_index_array_formats,GL_IUI_V2F_EXT,GL_IUI_V3F_EXT,GL_IUI_N3F_V2F_EXT,GL_IUI_N3F_V3F_EXT,GL_T2F_IUI_V2F_EXT,GL_T2F_IUI_V3F_EXT,GL_T2F_IUI_N3F_V2F_EXT,GL_T2F_IUI_N3F_V3F_EXT: extern const UInt
 GL_EXT_index_func,GL_INDEX_TEST_EXT,GL_INDEX_TEST_FUNC_EXT,GL_INDEX_TEST_REF_EXT: extern const UInt
-glIndexFuncEXT: extern func (func: UInt, ref: Float)
+glIndexFuncEXT: extern func (function: UInt, ref: Float)
 GL_EXT_index_material,GL_INDEX_MATERIAL_EXT,GL_INDEX_MATERIAL_PARAMETER_EXT,GL_INDEX_MATERIAL_FACE_EXT: extern const UInt
 glIndexMaterialEXT: extern func (face: UInt, mode: UInt)
 GL_EXT_index_texture: extern const UInt
@@ -2663,7 +2536,7 @@ glGetQueryObjecti64vEXT: extern func (id: UInt, pname: UInt, params: Int64*)
 glGetQueryObjectui64vEXT: extern func (id: UInt, pname: UInt, params: UInt64*)
 GL_EXT_transform_feedback,GL_TRANSFORM_FEEDBACK_BUFFER_EXT,GL_TRANSFORM_FEEDBACK_BUFFER_START_EXT,GL_TRANSFORM_FEEDBACK_BUFFER_SIZE_EXT,GL_TRANSFORM_FEEDBACK_BUFFER_BINDING_EXT,GL_INTERLEAVED_ATTRIBS_EXT,GL_SEPARATE_ATTRIBS_EXT,GL_PRIMITIVES_GENERATED_EXT,GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_EXT,GL_RASTERIZER_DISCARD_EXT,GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS_EXT,GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS_EXT,GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS_EXT,GL_TRANSFORM_FEEDBACK_VARYINGS_EXT,GL_TRANSFORM_FEEDBACK_BUFFER_MODE_EXT,GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH_EXT: extern const UInt
 glBeginTransformFeedbackEXT: extern func (primitiveMode: UInt)
-glEndTransformFeedbackEXT: extern func 
+glEndTransformFeedbackEXT: extern func
 glBindBufferRangeEXT: extern func (target: UInt, index: UInt, buffer: UInt, offset: Int32, size: Long)
 glBindBufferOffsetEXT: extern func (target: UInt, index: UInt, buffer: UInt, offset: Int32)
 glBindBufferBaseEXT: extern func (target: UInt, index: UInt, buffer: UInt)
@@ -2692,8 +2565,8 @@ glVertexAttribL4dvEXT: extern func (index: UInt, v: Double*)
 glVertexAttribLPointerEXT: extern func (index: UInt, size: Int, type: UInt, stride: Int, pointer: Pointer)
 glGetVertexAttribLdvEXT: extern func (index: UInt, pname: UInt, params: Double*)
 GL_EXT_vertex_shader,GL_VERTEX_SHADER_EXT,GL_VERTEX_SHADER_BINDING_EXT,GL_OP_INDEX_EXT,GL_OP_NEGATE_EXT,GL_OP_DOT3_EXT,GL_OP_DOT4_EXT,GL_OP_MUL_EXT,GL_OP_ADD_EXT,GL_OP_MADD_EXT,GL_OP_FRAC_EXT,GL_OP_MAX_EXT,GL_OP_MIN_EXT,GL_OP_SET_GE_EXT,GL_OP_SET_LT_EXT,GL_OP_CLAMP_EXT,GL_OP_FLOOR_EXT,GL_OP_ROUND_EXT,GL_OP_EXP_BASE_2_EXT,GL_OP_LOG_BASE_2_EXT,GL_OP_POWER_EXT,GL_OP_RECIP_EXT,GL_OP_RECIP_SQRT_EXT,GL_OP_SUB_EXT,GL_OP_CROSS_PRODUCT_EXT,GL_OP_MULTIPLY_MATRIX_EXT,GL_OP_MOV_EXT,GL_OUTPUT_VERTEX_EXT,GL_OUTPUT_COLOR0_EXT,GL_OUTPUT_COLOR1_EXT,GL_OUTPUT_TEXTURE_COORD0_EXT,GL_OUTPUT_TEXTURE_COORD1_EXT,GL_OUTPUT_TEXTURE_COORD2_EXT,GL_OUTPUT_TEXTURE_COORD3_EXT,GL_OUTPUT_TEXTURE_COORD4_EXT,GL_OUTPUT_TEXTURE_COORD5_EXT,GL_OUTPUT_TEXTURE_COORD6_EXT,GL_OUTPUT_TEXTURE_COORD7_EXT,GL_OUTPUT_TEXTURE_COORD8_EXT,GL_OUTPUT_TEXTURE_COORD9_EXT,GL_OUTPUT_TEXTURE_COORD10_EXT,GL_OUTPUT_TEXTURE_COORD11_EXT,GL_OUTPUT_TEXTURE_COORD12_EXT,GL_OUTPUT_TEXTURE_COORD13_EXT,GL_OUTPUT_TEXTURE_COORD14_EXT,GL_OUTPUT_TEXTURE_COORD15_EXT,GL_OUTPUT_TEXTURE_COORD16_EXT,GL_OUTPUT_TEXTURE_COORD17_EXT,GL_OUTPUT_TEXTURE_COORD18_EXT,GL_OUTPUT_TEXTURE_COORD19_EXT,GL_OUTPUT_TEXTURE_COORD20_EXT,GL_OUTPUT_TEXTURE_COORD21_EXT,GL_OUTPUT_TEXTURE_COORD22_EXT,GL_OUTPUT_TEXTURE_COORD23_EXT,GL_OUTPUT_TEXTURE_COORD24_EXT,GL_OUTPUT_TEXTURE_COORD25_EXT,GL_OUTPUT_TEXTURE_COORD26_EXT,GL_OUTPUT_TEXTURE_COORD27_EXT,GL_OUTPUT_TEXTURE_COORD28_EXT,GL_OUTPUT_TEXTURE_COORD29_EXT,GL_OUTPUT_TEXTURE_COORD30_EXT,GL_OUTPUT_TEXTURE_COORD31_EXT,GL_OUTPUT_FOG_EXT,GL_SCALAR_EXT,GL_VECTOR_EXT,GL_MATRIX_EXT,GL_VARIANT_EXT,GL_INVARIANT_EXT,GL_LOCAL_CONSTANT_EXT,GL_LOCAL_EXT,GL_MAX_VERTEX_SHADER_INSTRUCTIONS_EXT,GL_MAX_VERTEX_SHADER_VARIANTS_EXT,GL_MAX_VERTEX_SHADER_INVARIANTS_EXT,GL_MAX_VERTEX_SHADER_LOCAL_CONSTANTS_EXT,GL_MAX_VERTEX_SHADER_LOCALS_EXT,GL_MAX_OPTIMIZED_VERTEX_SHADER_INSTRUCTIONS_EXT,GL_MAX_OPTIMIZED_VERTEX_SHADER_VARIANTS_EXT,GL_MAX_OPTIMIZED_VERTEX_SHADER_LOCAL_CONSTANTS_EXT,GL_MAX_OPTIMIZED_VERTEX_SHADER_INVARIANTS_EXT,GL_MAX_OPTIMIZED_VERTEX_SHADER_LOCALS_EXT,GL_VERTEX_SHADER_INSTRUCTIONS_EXT,GL_VERTEX_SHADER_VARIANTS_EXT,GL_VERTEX_SHADER_INVARIANTS_EXT,GL_VERTEX_SHADER_LOCAL_CONSTANTS_EXT,GL_VERTEX_SHADER_LOCALS_EXT,GL_VERTEX_SHADER_OPTIMIZED_EXT,GL_X_EXT,GL_Y_EXT,GL_Z_EXT,GL_W_EXT,GL_NEGATIVE_X_EXT,GL_NEGATIVE_Y_EXT,GL_NEGATIVE_Z_EXT,GL_NEGATIVE_W_EXT,GL_ZERO_EXT,GL_ONE_EXT,GL_NEGATIVE_ONE_EXT,GL_NORMALIZED_RANGE_EXT,GL_FULL_RANGE_EXT,GL_CURRENT_VERTEX_EXT,GL_MVP_MATRIX_EXT,GL_VARIANT_VALUE_EXT,GL_VARIANT_DATATYPE_EXT,GL_VARIANT_ARRAY_STRIDE_EXT,GL_VARIANT_ARRAY_TYPE_EXT,GL_VARIANT_ARRAY_EXT,GL_VARIANT_ARRAY_POINTER_EXT,GL_INVARIANT_VALUE_EXT,GL_INVARIANT_DATATYPE_EXT,GL_LOCAL_CONSTANT_VALUE_EXT,GL_LOCAL_CONSTANT_DATATYPE_EXT: extern const UInt
-glBeginVertexShaderEXT: extern func 
-glEndVertexShaderEXT: extern func 
+glBeginVertexShaderEXT: extern func
+glEndVertexShaderEXT: extern func
 glBindVertexShaderEXT: extern func (id: UInt)
 glGenVertexShadersEXT: extern func (range: UInt) -> UInt
 glDeleteVertexShaderEXT: extern func (id: UInt)
@@ -2741,7 +2614,7 @@ glVertexWeightPointerEXT: extern func (size: Int, type: UInt, stride: Int, point
 GL_EXT_x11_sync_object,GL_SYNC_X11_FENCE_EXT: extern const UInt
 glImportSyncEXT: extern func (external_sync_type: UInt, external_sync: Int32, flags: UInt) -> Pointer
 GL_GREMEDY_frame_terminator: extern const UInt
-glFrameTerminatorGREMEDY: extern func 
+glFrameTerminatorGREMEDY: extern func
 GL_GREMEDY_string_marker: extern const UInt
 glStringMarkerGREMEDY: extern func (len: Int, string: Pointer)
 GL_HP_convolution_border_modes,GL_IGNORE_BORDER_HP,GL_CONSTANT_BORDER_HP,GL_REPLICATE_BORDER_HP,GL_CONVOLUTION_BORDER_COLOR_HP: extern const UInt
@@ -2788,7 +2661,7 @@ glTexCoordPointervINTEL: extern func (size: Int, type: UInt, pointer: Pointer*)
 GL_MESAX_texture_stack,GL_TEXTURE_1D_STACK_MESAX,GL_TEXTURE_2D_STACK_MESAX,GL_PROXY_TEXTURE_1D_STACK_MESAX,GL_PROXY_TEXTURE_2D_STACK_MESAX,GL_TEXTURE_1D_STACK_BINDING_MESAX,GL_TEXTURE_2D_STACK_BINDING_MESAX: extern const UInt
 GL_MESA_pack_invert,GL_PACK_INVERT_MESA: extern const UInt
 GL_MESA_resize_buffers: extern const UInt
-glResizeBuffersMESA: extern func 
+glResizeBuffersMESA: extern func
 GL_MESA_window_pos: extern const UInt
 glWindowPos2dMESA: extern func (x: Double, y: Double)
 glWindowPos2dvMESA: extern func (v: Double*)
@@ -2817,7 +2690,7 @@ glWindowPos4svMESA: extern func (v: Short*)
 GL_MESA_ycbcr_texture,GL_UNSIGNED_SHORT_8_8_MESA,GL_UNSIGNED_SHORT_8_8_REV_MESA,GL_YCBCR_MESA: extern const UInt
 GL_NVX_conditional_render: extern const UInt
 glBeginConditionalRenderNVX: extern func (id: UInt)
-glEndConditionalRenderNVX: extern func 
+glEndConditionalRenderNVX: extern func
 GL_NV_bindless_multi_draw_indirect: extern const UInt
 glMultiDrawArraysIndirectBindlessNV: extern func (mode: UInt, indirect: Pointer, drawCount: Int, stride: Int, vertexBufferCount: Int)
 glMultiDrawElementsIndirectBindlessNV: extern func (mode: UInt, type: UInt, indirect: Pointer, drawCount: Int, stride: Int, vertexBufferCount: Int)
@@ -2837,13 +2710,13 @@ glIsTextureHandleResidentNV: extern func (handle: UInt64) -> UInt
 glIsImageHandleResidentNV: extern func (handle: UInt64) -> UInt
 GL_NV_blend_equation_advanced,GL_BLEND_OVERLAP_NV,GL_BLEND_PREMULTIPLIED_SRC_NV,GL_BLUE_NV,GL_COLORBURN_NV,GL_COLORDODGE_NV,GL_CONJOINT_NV,GL_CONTRAST_NV,GL_DARKEN_NV,GL_DIFFERENCE_NV,GL_DISJOINT_NV,GL_DST_ATOP_NV,GL_DST_IN_NV,GL_DST_NV,GL_DST_OUT_NV,GL_DST_OVER_NV,GL_EXCLUSION_NV,GL_GREEN_NV,GL_HARDLIGHT_NV,GL_HARDMIX_NV,GL_HSL_COLOR_NV,GL_HSL_HUE_NV,GL_HSL_LUMINOSITY_NV,GL_HSL_SATURATION_NV,GL_INVERT_OVG_NV,GL_INVERT_RGB_NV,GL_LIGHTEN_NV,GL_LINEARBURN_NV,GL_LINEARDODGE_NV,GL_LINEARLIGHT_NV,GL_MINUS_CLAMPED_NV,GL_MINUS_NV,GL_MULTIPLY_NV,GL_OVERLAY_NV,GL_PINLIGHT_NV,GL_PLUS_CLAMPED_ALPHA_NV,GL_PLUS_CLAMPED_NV,GL_PLUS_DARKER_NV,GL_PLUS_NV,GL_RED_NV,GL_SCREEN_NV,GL_SOFTLIGHT_NV,GL_SRC_ATOP_NV,GL_SRC_IN_NV,GL_SRC_NV,GL_SRC_OUT_NV,GL_SRC_OVER_NV,GL_UNCORRELATED_NV,GL_VIVIDLIGHT_NV,GL_XOR_NV: extern const UInt
 glBlendParameteriNV: extern func (pname: UInt, value: Int)
-glBlendBarrierNV: extern func 
+glBlendBarrierNV: extern func
 GL_NV_blend_equation_advanced_coherent,GL_BLEND_ADVANCED_COHERENT_NV: extern const UInt
 GL_NV_blend_square: extern const UInt
 GL_NV_compute_program5,GL_COMPUTE_PROGRAM_NV,GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV: extern const UInt
 GL_NV_conditional_render,GL_QUERY_WAIT_NV,GL_QUERY_NO_WAIT_NV,GL_QUERY_BY_REGION_WAIT_NV,GL_QUERY_BY_REGION_NO_WAIT_NV: extern const UInt
 glBeginConditionalRenderNV: extern func (id: UInt, mode: UInt)
-glEndConditionalRenderNV: extern func 
+glEndConditionalRenderNV: extern func
 GL_NV_copy_depth_to_color,GL_DEPTH_STENCIL_TO_RGBA_NV,GL_DEPTH_STENCIL_TO_BGRA_NV: extern const UInt
 GL_NV_copy_image: extern const UInt
 glCopyImageSubDataNV: extern func (srcName: UInt, srcTarget: UInt, srcLevel: Int, srcX: Int, srcY: Int, srcZ: Int, dstName: UInt, dstTarget: UInt, dstLevel: Int, dstX: Int, dstY: Int, dstZ: Int, width: Int, height: Int, depth: Int)
@@ -3009,7 +2882,7 @@ glGenOcclusionQueriesNV: extern func (n: Int, ids: UInt*)
 glDeleteOcclusionQueriesNV: extern func (n: Int, ids: UInt*)
 glIsOcclusionQueryNV: extern func (id: UInt) -> UInt
 glBeginOcclusionQueryNV: extern func (id: UInt)
-glEndOcclusionQueryNV: extern func 
+glEndOcclusionQueryNV: extern func
 glGetOcclusionQueryivNV: extern func (id: UInt, pname: UInt, params: Int*)
 glGetOcclusionQueryuivNV: extern func (id: UInt, pname: UInt, params: UInt*)
 GL_NV_packed_depth_stencil,GL_DEPTH_STENCIL_NV,GL_UNSIGNED_INT_24_8_NV: extern const UInt
@@ -3038,13 +2911,13 @@ glPathParameteriNV: extern func (path: UInt, pname: UInt, value: Int)
 glPathParameterfvNV: extern func (path: UInt, pname: UInt, value: Float*)
 glPathParameterfNV: extern func (path: UInt, pname: UInt, value: Float)
 glPathDashArrayNV: extern func (path: UInt, dashCount: Int, dashArray: Float*)
-glPathStencilFuncNV: extern func (func: UInt, ref: Int, mask: UInt)
+glPathStencilFuncNV: extern func (function: UInt, ref: Int, mask: UInt)
 glPathStencilDepthOffsetNV: extern func (factor: Float, units: Float)
 glStencilFillPathNV: extern func (path: UInt, fillMode: UInt, mask: UInt)
 glStencilStrokePathNV: extern func (path: UInt, reference: Int, mask: UInt)
 glStencilFillPathInstancedNV: extern func (numPaths: Int, pathNameType: UInt, paths: Pointer, pathBase: UInt, fillMode: UInt, mask: UInt, transformType: UInt, transformValues: Float*)
 glStencilStrokePathInstancedNV: extern func (numPaths: Int, pathNameType: UInt, paths: Pointer, pathBase: UInt, reference: Int, mask: UInt, transformType: UInt, transformValues: Float*)
-glPathCoverDepthFuncNV: extern func (func: UInt)
+glPathCoverDepthFuncNV: extern func (function: UInt)
 glPathColorGenNV: extern func (color: UInt, genMode: UInt, colorFormat: UInt, coeffs: Float*)
 glPathTexGenNV: extern func (texCoordSet: UInt, genMode: UInt, components: Int, coeffs: Float*)
 glPathFogGenNV: extern func (genMode: UInt)
@@ -3082,7 +2955,7 @@ glGetVideouivNV: extern func (video_slot: UInt, pname: UInt, params: UInt*)
 glGetVideoi64vNV: extern func (video_slot: UInt, pname: UInt, params: Int64*)
 glGetVideoui64vNV: extern func (video_slot: UInt, pname: UInt, params: UInt64*)
 GL_NV_primitive_restart,GL_PRIMITIVE_RESTART_NV,GL_PRIMITIVE_RESTART_INDEX_NV: extern const UInt
-glPrimitiveRestartNV: extern func 
+glPrimitiveRestartNV: extern func
 glPrimitiveRestartIndexNV: extern func (index: UInt)
 GL_NV_register_combiners,GL_REGISTER_COMBINERS_NV,GL_VARIABLE_A_NV,GL_VARIABLE_B_NV,GL_VARIABLE_C_NV,GL_VARIABLE_D_NV,GL_VARIABLE_E_NV,GL_VARIABLE_F_NV,GL_VARIABLE_G_NV,GL_CONSTANT_COLOR0_NV,GL_CONSTANT_COLOR1_NV,GL_SPARE0_NV,GL_SPARE1_NV,GL_DISCARD_NV,GL_E_TIMES_F_NV,GL_SPARE0_PLUS_SECONDARY_COLOR_NV,GL_UNSIGNED_IDENTITY_NV,GL_UNSIGNED_INVERT_NV,GL_EXPAND_NORMAL_NV,GL_EXPAND_NEGATE_NV,GL_HALF_BIAS_NORMAL_NV,GL_HALF_BIAS_NEGATE_NV,GL_SIGNED_IDENTITY_NV,GL_SIGNED_NEGATE_NV,GL_SCALE_BY_TWO_NV,GL_SCALE_BY_FOUR_NV,GL_SCALE_BY_ONE_HALF_NV,GL_BIAS_BY_NEGATIVE_ONE_HALF_NV,GL_COMBINER_INPUT_NV,GL_COMBINER_MAPPING_NV,GL_COMBINER_COMPONENT_USAGE_NV,GL_COMBINER_AB_DOT_PRODUCT_NV,GL_COMBINER_CD_DOT_PRODUCT_NV,GL_COMBINER_MUX_SUM_NV,GL_COMBINER_SCALE_NV,GL_COMBINER_BIAS_NV,GL_COMBINER_AB_OUTPUT_NV,GL_COMBINER_CD_OUTPUT_NV,GL_COMBINER_SUM_OUTPUT_NV,GL_MAX_GENERAL_COMBINERS_NV,GL_NUM_GENERAL_COMBINERS_NV,GL_COLOR_SUM_CLAMP_NV,GL_COMBINER0_NV,GL_COMBINER1_NV,GL_COMBINER2_NV,GL_COMBINER3_NV,GL_COMBINER4_NV,GL_COMBINER5_NV,GL_COMBINER6_NV,GL_COMBINER7_NV: extern const UInt
 glCombinerParameterfvNV: extern func (pname: UInt, params: Float*)
@@ -3124,7 +2997,7 @@ GL_NV_tessellation_program5,GL_MAX_PROGRAM_PATCH_ATTRIBS_NV,GL_TESS_CONTROL_PROG
 GL_NV_texgen_emboss,GL_EMBOSS_LIGHT_NV,GL_EMBOSS_CONSTANT_NV,GL_EMBOSS_MAP_NV: extern const UInt
 GL_NV_texgen_reflection,GL_NORMAL_MAP_NV,GL_REFLECTION_MAP_NV: extern const UInt
 GL_NV_texture_barrier: extern const UInt
-glTextureBarrierNV: extern func 
+glTextureBarrierNV: extern func
 GL_NV_texture_compression_vtc: extern const UInt
 GL_NV_texture_env_combine4,GL_COMBINE4_NV,GL_SOURCE3_RGB_NV,GL_SOURCE3_ALPHA_NV,GL_OPERAND3_RGB_NV,GL_OPERAND3_ALPHA_NV: extern const UInt
 GL_NV_texture_expand_normal,GL_TEXTURE_UNSIGNED_REMAP_MODE_NV: extern const UInt
@@ -3141,7 +3014,7 @@ GL_NV_texture_shader2,GL_DOT_PRODUCT_TEXTURE_3D_NV: extern const UInt
 GL_NV_texture_shader3,GL_OFFSET_PROJECTIVE_TEXTURE_2D_NV,GL_OFFSET_PROJECTIVE_TEXTURE_2D_SCALE_NV,GL_OFFSET_PROJECTIVE_TEXTURE_RECTANGLE_NV,GL_OFFSET_PROJECTIVE_TEXTURE_RECTANGLE_SCALE_NV,GL_OFFSET_HILO_TEXTURE_2D_NV,GL_OFFSET_HILO_TEXTURE_RECTANGLE_NV,GL_OFFSET_HILO_PROJECTIVE_TEXTURE_2D_NV,GL_OFFSET_HILO_PROJECTIVE_TEXTURE_RECTANGLE_NV,GL_DEPENDENT_HILO_TEXTURE_2D_NV,GL_DEPENDENT_RGB_TEXTURE_3D_NV,GL_DEPENDENT_RGB_TEXTURE_CUBE_MAP_NV,GL_DOT_PRODUCT_PASS_THROUGH_NV,GL_DOT_PRODUCT_TEXTURE_1D_NV,GL_DOT_PRODUCT_AFFINE_DEPTH_REPLACE_NV,GL_HILO8_NV,GL_SIGNED_HILO8_NV,GL_FORCE_BLUE_TO_ONE_NV: extern const UInt
 GL_NV_transform_feedback,GL_BACK_PRIMARY_COLOR_NV,GL_BACK_SECONDARY_COLOR_NV,GL_TEXTURE_COORD_NV,GL_CLIP_DISTANCE_NV,GL_VERTEX_ID_NV,GL_PRIMITIVE_ID_NV,GL_GENERIC_ATTRIB_NV,GL_TRANSFORM_FEEDBACK_ATTRIBS_NV,GL_TRANSFORM_FEEDBACK_BUFFER_MODE_NV,GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS_NV,GL_ACTIVE_VARYINGS_NV,GL_ACTIVE_VARYING_MAX_LENGTH_NV,GL_TRANSFORM_FEEDBACK_VARYINGS_NV,GL_TRANSFORM_FEEDBACK_BUFFER_START_NV,GL_TRANSFORM_FEEDBACK_BUFFER_SIZE_NV,GL_TRANSFORM_FEEDBACK_RECORD_NV,GL_PRIMITIVES_GENERATED_NV,GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_NV,GL_RASTERIZER_DISCARD_NV,GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS_NV,GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS_NV,GL_INTERLEAVED_ATTRIBS_NV,GL_SEPARATE_ATTRIBS_NV,GL_TRANSFORM_FEEDBACK_BUFFER_NV,GL_TRANSFORM_FEEDBACK_BUFFER_BINDING_NV,GL_LAYER_NV,GL_NEXT_BUFFER_NV,GL_SKIP_COMPONENTS4_NV,GL_SKIP_COMPONENTS3_NV,GL_SKIP_COMPONENTS2_NV,GL_SKIP_COMPONENTS1_NV: extern const UInt
 glBeginTransformFeedbackNV: extern func (primitiveMode: UInt)
-glEndTransformFeedbackNV: extern func 
+glEndTransformFeedbackNV: extern func
 glTransformFeedbackAttribsNV: extern func (count: UInt, attribs: Int*, bufferMode: UInt)
 glBindBufferRangeNV: extern func (target: UInt, index: UInt, buffer: UInt, offset: Int32, size: Long)
 glBindBufferOffsetNV: extern func (target: UInt, index: UInt, buffer: UInt, offset: Int32)
@@ -3157,13 +3030,13 @@ glBindTransformFeedbackNV: extern func (target: UInt, id: UInt)
 glDeleteTransformFeedbacksNV: extern func (n: Int, ids: UInt*)
 glGenTransformFeedbacksNV: extern func (n: Int, ids: UInt*)
 glIsTransformFeedbackNV: extern func (id: UInt) -> UInt
-glPauseTransformFeedbackNV: extern func 
-glResumeTransformFeedbackNV: extern func 
+glPauseTransformFeedbackNV: extern func
+glResumeTransformFeedbackNV: extern func
 glDrawTransformFeedbackNV: extern func (mode: UInt, id: UInt)
 GL_NV_vdpau_interop: extern const UInt
 GL_SURFACE_STATE_NV,GL_SURFACE_REGISTERED_NV,GL_SURFACE_MAPPED_NV,GL_WRITE_DISCARD_NV: extern const UInt
 glVDPAUInitNV: extern func (vdpDevice: Pointer, getProcAddress: Pointer)
-glVDPAUFiniNV: extern func 
+glVDPAUFiniNV: extern func
 glVDPAURegisterVideoSurfaceNV: extern func (vdpSurface: Pointer, target: UInt, numTextureNames: Int, textureNames: UInt*) -> Int32
 glVDPAURegisterOutputSurfaceNV: extern func (vdpSurface: Pointer, target: UInt, numTextureNames: Int, textureNames: UInt*) -> Int32
 glVDPAUIsSurfaceNV: extern func (surface: Int32)
@@ -3173,7 +3046,7 @@ glVDPAUSurfaceAccessNV: extern func (surface: Int32, access: UInt)
 glVDPAUMapSurfacesNV: extern func (numSurfaces: Int, surfaces: Int32*)
 glVDPAUUnmapSurfacesNV: extern func (numSurface: Int, surfaces: Int32*)
 GL_NV_vertex_array_range,GL_VERTEX_ARRAY_RANGE_NV,GL_VERTEX_ARRAY_RANGE_LENGTH_NV,GL_VERTEX_ARRAY_RANGE_VALID_NV,GL_MAX_VERTEX_ARRAY_RANGE_ELEMENT_NV,GL_VERTEX_ARRAY_RANGE_POINTER_NV: extern const UInt
-glFlushVertexArrayRangeNV: extern func 
+glFlushVertexArrayRangeNV: extern func
 glVertexArrayRangeNV: extern func (length: Int, pointer: Pointer)
 GL_NV_vertex_array_range2,GL_VERTEX_ARRAY_RANGE_WITHOUT_FLUSH_NV: extern const UInt
 GL_NV_vertex_attrib_integer_64bit: extern const UInt
@@ -3375,7 +3248,7 @@ GL_SGIX_convolution_accuracy,GL_CONVOLUTION_HINT_SGIX: extern const UInt
 GL_SGIX_depth_pass_instrument: extern const UInt
 GL_SGIX_depth_texture,GL_DEPTH_COMPONENT16_SGIX,GL_DEPTH_COMPONENT24_SGIX,GL_DEPTH_COMPONENT32_SGIX: extern const UInt
 GL_SGIX_flush_raster: extern const UInt
-glFlushRasterSGIX: extern func 
+glFlushRasterSGIX: extern func
 GL_SGIX_fog_offset,GL_FOG_OFFSET_SGIX,GL_FOG_OFFSET_VALUE_SGIX: extern const UInt
 GL_SGIX_fragment_lighting,GL_FRAGMENT_LIGHTING_SGIX,GL_FRAGMENT_COLOR_MATERIAL_SGIX,GL_FRAGMENT_COLOR_MATERIAL_FACE_SGIX,GL_FRAGMENT_COLOR_MATERIAL_PARAMETER_SGIX,GL_MAX_FRAGMENT_LIGHTS_SGIX,GL_MAX_ACTIVE_LIGHTS_SGIX,GL_CURRENT_RASTER_NORMAL_SGIX,GL_LIGHT_ENV_MODE_SGIX,GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX,GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX,GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX,GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX,GL_FRAGMENT_LIGHT0_SGIX,GL_FRAGMENT_LIGHT1_SGIX,GL_FRAGMENT_LIGHT2_SGIX,GL_FRAGMENT_LIGHT3_SGIX,GL_FRAGMENT_LIGHT4_SGIX,GL_FRAGMENT_LIGHT5_SGIX,GL_FRAGMENT_LIGHT6_SGIX,GL_FRAGMENT_LIGHT7_SGIX: extern const UInt
 glFragmentColorMaterialSGIX: extern func (face: UInt, mode: UInt)
@@ -3405,7 +3278,7 @@ glGetInstrumentsSGIX: extern func  -> Int
 glInstrumentsBufferSGIX: extern func (size: Int, buffer: Int*)
 glPollInstrumentsSGIX: extern func (marker_p: Int*) -> Int
 glReadInstrumentsSGIX: extern func (marker: Int)
-glStartInstrumentsSGIX: extern func 
+glStartInstrumentsSGIX: extern func
 glStopInstrumentsSGIX: extern func (marker: Int)
 GL_SGIX_interlace,GL_INTERLACE_SGIX: extern const UInt
 GL_SGIX_ir_instrument1,GL_IR_INSTRUMENT1_SGIX: extern const UInt
@@ -3437,7 +3310,7 @@ glSpriteParameteriSGIX: extern func (pname: UInt, param: Int)
 glSpriteParameterivSGIX: extern func (pname: UInt, params: Int*)
 GL_SGIX_subsample,GL_PACK_SUBSAMPLE_RATE_SGIX,GL_UNPACK_SUBSAMPLE_RATE_SGIX,GL_PIXEL_SUBSAMPLE_4444_SGIX,GL_PIXEL_SUBSAMPLE_2424_SGIX,GL_PIXEL_SUBSAMPLE_4242_SGIX: extern const UInt
 GL_SGIX_tag_sample_buffer: extern const UInt
-glTagSampleBufferSGIX: extern func 
+glTagSampleBufferSGIX: extern func
 GL_SGIX_texture_add_env,GL_TEXTURE_ENV_BIAS_SGIX: extern const UInt
 GL_SGIX_texture_coordinate_clamp,GL_TEXTURE_MAX_CLAMP_S_SGIX,GL_TEXTURE_MAX_CLAMP_T_SGIX,GL_TEXTURE_MAX_CLAMP_R_SGIX: extern const UInt
 GL_SGIX_texture_lod_bias,GL_TEXTURE_LOD_BIAS_S_SGIX,GL_TEXTURE_LOD_BIAS_T_SGIX,GL_TEXTURE_LOD_BIAS_R_SGIX: extern const UInt
@@ -3458,7 +3331,7 @@ glGetColorTableParameterfvSGI: extern func (target: UInt, pname: UInt, params: F
 glGetColorTableParameterivSGI: extern func (target: UInt, pname: UInt, params: Int*)
 GL_SGI_texture_color_table,GL_TEXTURE_COLOR_TABLE_SGI,GL_PROXY_TEXTURE_COLOR_TABLE_SGI: extern const UInt
 GL_SUNX_ant_data,GL_UNPACK_CONSTANT_DATA_SUNX,GL_TEXTURE_CONSTANT_DATA_SUNX: extern const UInt
-glFinishTextureSUNX: extern func 
+glFinishTextureSUNX: extern func
 GL_SUN_convolution_border_modes,GL_WRAP_BORDER_SUN: extern const UInt
 GL_SUN_global_alpha,GL_GLOBAL_ALPHA_SUN,GL_GLOBAL_ALPHA_FACTOR_SUN: extern const UInt
 glGlobalAlphaFactorbSUN: extern func (factor: Char)

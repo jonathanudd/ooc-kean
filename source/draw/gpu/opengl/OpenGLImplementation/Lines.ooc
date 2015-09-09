@@ -15,7 +15,7 @@
  * along with This software. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import include/gles3
+use ooc-opengl-version
 use ooc-math
 
 Lines: class {

@@ -47,8 +47,8 @@ function translateParameterType {
   eval $_resultvar="'$_myresult'"
 }
 
-if test -e temp.ooc; then
-  rm temp.ooc
+if test -e convertGLHeaderTemp.ooc; then
+  rm convertGLHeaderTemp.ooc
 fi
 if test -e $2; then
   while true; do
@@ -65,8 +65,8 @@ declare -a parameterTypesArray # Used to keep track of any untranslated paramete
 parameterTypesArrayCounter=0
 
 
-awk '/,$/ { printf("%s\t", $0); next } 1' "$1" > temp.ooc # Remove newlines occuring in parameterlists
-sed -i 's/\t/ /g' temp.ooc # Replace tab with space
+awk '/,$/ { printf("%s\t", $0); next } 1' "$1" > convertGLHeaderTemp.ooc # Remove newlines occuring in parameterlists
+sed -i 's/\t/ /g' convertGLHeaderTemp.ooc # Replace tab with space
 
 ignoreList=("/*" "*" "*/" "**") # Ignore comments
 removeList=("#define" "#ifndef" "#ifdef" "#endif" "}" "typedef" "#if" "#else" "#elif" "#pragma" "extern \"C\"" "#include" "#" " ") # Remove lines starting with theese strings
@@ -78,6 +78,9 @@ ignoredLines=0
 unhandeledLines=0
 
 constantsBuffer=""
+
+declare -a functionNamesArray # Used to keep track of already defines functions
+functionNamesArrayCounter=0
 
 i=1
 while read p; do
@@ -115,11 +118,15 @@ while read p; do
       name=`echo "$p" | awk '{print $4;}'`
     fi
 
-    if [ "${name: -1}" == "(" ]; then
-      newLine=${name::-1}": extern func ("
-    else
-      newLine="$name"": extern func ("
+    name=${name%(*}
+    if [[ "${functionNamesArray[*]}" =~ (^| )"$name"($| ) ]]; then
+      continue;
     fi
+
+    functionNamesArray[$functionNamesArrayCounter]="$name"
+    let "functionNamesArrayCounter+=1"
+
+    newLine="$name"": extern func ("
 
     # Handle list of parameters
     parameters=${p#*(}
@@ -149,6 +156,9 @@ while read p; do
           parameterName="${word::-1}"
         else
           parameterName="$word"
+        fi
+        if [ "$parameterName" == "func" ]; then # func is a keyword in OOC
+          parameterName="function"
         fi
         if [ "${parameterName:0:2}" == "**" ]; then
           parameterName=${parameterName#*\*\*}
@@ -218,9 +228,9 @@ while read p; do
     echo "$newLine" >> $2
     let "i+=1" # Keep track of line numbers for debug texts
   fi
-done < temp.ooc
+done < convertGLHeaderTemp.ooc
 
-rm temp.ooc
+rm convertGLHeaderTemp.ooc
 
 if [ $removedLines -gt 0 ]; then
   echo "Removed ""$removedLines"" Lines"

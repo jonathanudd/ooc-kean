@@ -16,7 +16,7 @@
 */
 use ooc-math
 use ooc-base
-import include/gles3
+use ooc-opengl-version
 import Context
 VolumeTexture: class {
 	_backend: UInt
