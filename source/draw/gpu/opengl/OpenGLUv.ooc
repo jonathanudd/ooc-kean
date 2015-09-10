@@ -14,29 +14,38 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with This software. If not, see <http://www.gnu.org/licenses/>.
 */
+
 use ooc-math
 use ooc-draw
 use ooc-draw-gpu
-import OpenGLES3Canvas, Map/OpenGLES3Map, Map/OpenGLES3MapPack, OpenGLES3Texture
+import OpenGLImplementation/Texture, OpenGLCanvas, Map/OpenGLMap, Map/OpenGLMapPack, OpenGLTexture
 
-OpenGLES3Monochrome: class extends GpuMonochrome {
+OpenGLUv: class extends GpuUv {
 	init: func ~fromPixels (size: IntSize2D, stride: UInt, data: Pointer, coordinateSystem: CoordinateSystem, context: GpuContext) {
-		super(OpenGLES3Texture createMonochrome(size, stride, data), size, context)
+		super(OpenGLTexture createUv(size, stride, data), size, context)
 		this coordinateSystem = coordinateSystem
 	}
-	init: func (size: IntSize2D, context: GpuContext) { this init(size, size width, null, CoordinateSystem YUpward, context) }
-	init: func ~fromTexture (texture: GpuTexture, size: IntSize2D, context: GpuContext) { super(texture, size, context) }
-	init: func ~fromRaster (rasterImage: RasterMonochrome, context: GpuContext) {
+	init: func (size: IntSize2D, context: GpuContext) {
+		this init(size, size width * 2, null, CoordinateSystem YUpward, context)
+	}
+	init: func ~fromTexture (texture: GpuTexture, size: IntSize2D, context: GpuContext) {
+		super(texture, size, context)
+	}
+	init: func ~fromRaster (rasterImage: RasterUv, context: GpuContext) {
 		this init(rasterImage size, rasterImage stride, rasterImage buffer pointer, rasterImage coordinateSystem, context)
 	}
 	toRasterDefault: func -> RasterImage {
-		packed := this _context createBgra(IntSize2D new(this size width / 4, this size height))
+		packed := this _context createBgra(IntSize2D new(this size width / 2, this size height))
 		this _context packToRgba(this, packed, IntBox2D new(packed size))
 		buffer := packed canvas readPixels()
-		result := RasterMonochrome new(buffer, this size)
+		result := RasterUv new(buffer, this size)
 		packed free()
 		result
 	}
-	_createCanvas: func -> GpuCanvas { OpenGLES3Canvas new(this, this _context) }
-	create: override func (size: IntSize2D) -> This { this _context createMonochrome(size) as This }
+	_createCanvas: func -> GpuCanvas {
+		result := OpenGLCanvas new(this, this _context)
+		result clearColor = ColorBgra new(128, 128, 128, 128)
+		result
+	}
+	create: override func (size: IntSize2D) -> This { this _context createUv(size) as This }
 }

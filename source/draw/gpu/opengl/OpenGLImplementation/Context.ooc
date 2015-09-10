@@ -16,8 +16,7 @@
  */
 use ooc-base
 use ooc-math
-import include/[egl, gles]
-import NativeWindow, DebugGL
+import egl/egl, include/gles3, NativeWindow, DebugGL
 
 Context: class {
 	_eglContext: Pointer
@@ -85,7 +84,6 @@ Context: class {
 			return false
 		eglInitialize(this _eglDisplay, null, null)
 		eglBindAPI(EGL_OPENGL_ES_API)
-
 		configAttribs := [
 			EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 			EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
