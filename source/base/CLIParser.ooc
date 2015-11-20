@@ -77,8 +77,13 @@ CLIParser: class {
 				tokens add(Token new(TokenType Long, subStr))
 			} else if ((tmpStr startsWith?("-")) && (tmpLength > 1)) {
 				newStr := tmpStr substring(1)
-				for (i in 0 .. tmpLength - 1) {
-					tokens add(Token new(TokenType Short, newStr[i]toString()))
+				if(newStr substring(0, 1) toInt() > 0) {
+					tokens add(Token new(TokenType Parameter, tmpStr clone()))
+				}
+				else {
+					for (i in 0 .. tmpLength - 1) {
+						tokens add(Token new(TokenType Short, newStr[i]toString()))
+					}
 				}
 				newStr free()
 			} else {
