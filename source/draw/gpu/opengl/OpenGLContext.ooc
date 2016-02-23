@@ -12,20 +12,20 @@ use draw
 use draw-gpu
 use collections
 use concurrent
-import OpenGLPacked, OpenGLMonochrome, OpenGLBgr, OpenGLBgra, OpenGLUv, OpenGLFence, OpenGLMesh, OpenGLCanvas, _RecycleBin
+import OpenGLPacked, OpenGLMonochrome, OpenGLBgr, OpenGLBgra, OpenGLUv, OpenGLMesh, OpenGLCanvas, _RecycleBin, OpenGLPromise
 import OpenGLMap
 import backend/[GLContext, GLRenderer]
 
 version(!gpuOff) {
 _FenceToRasterFuture: class extends ToRasterFuture {
-	_fence: GpuFence
-	init: func (result: RasterImage, =_fence) { super(result) }
+	_promise: OpenGLPromise
+	init: func (result: RasterImage, =_promise) { super(result) }
 	free: override func {
-		this _fence free()
+		this _promise free()
 		super()
 	}
-	wait: override func -> Bool { this _fence wait() }
-	wait: override func ~timeout (time: TimeSpan) -> Bool { this _fence wait(time) }
+	wait: override func -> Bool { this _promise wait() }
+	wait: override func ~timeout (time: TimeSpan) -> Bool { this _promise wait(time) }
 }
 OpenGLContext: class extends GpuContext {
 	_backend: GLContext
@@ -94,11 +94,11 @@ OpenGLContext: class extends GpuContext {
 	}
 	_searchImageBin: func (type: GpuImageType, size: IntVector2D) -> GpuImage { this _recycleBin find(type, size) }
 	createMonochrome: override func (size: IntVector2D) -> GpuImage {
-		result := this _searchImageBin(GpuImageType monochrome, size)
+		result := this _searchImageBin(GpuImageType Monochrome, size)
 		result == null ? OpenGLMonochrome new(size, this) as GpuImage : result
 	}
 	_createMonochrome: func (raster: RasterMonochrome) -> GpuImage {
-		result := this _searchImageBin(GpuImageType monochrome, raster size)
+		result := this _searchImageBin(GpuImageType Monochrome, raster size)
 		if (result == null)
 			result = OpenGLMonochrome new(raster, this)
 		else
@@ -106,11 +106,11 @@ OpenGLContext: class extends GpuContext {
 		result
 	}
 	createUv: override func (size: IntVector2D) -> GpuImage {
-		result := this _searchImageBin(GpuImageType uv, size)
+		result := this _searchImageBin(GpuImageType Uv, size)
 		result == null ? OpenGLUv new(size, this) as GpuImage : result
 	}
 	_createUv: func (raster: RasterUv) -> GpuImage {
-		result := this _searchImageBin(GpuImageType uv, raster size)
+		result := this _searchImageBin(GpuImageType Uv, raster size)
 		if (result == null)
 			result = OpenGLUv new(raster, this)
 		else
@@ -118,11 +118,11 @@ OpenGLContext: class extends GpuContext {
 		result
 	}
 	createBgr: override func (size: IntVector2D) -> GpuImage {
-		result := this _searchImageBin(GpuImageType bgr, size)
+		result := this _searchImageBin(GpuImageType Bgr, size)
 		result == null ? OpenGLBgr new(size, this) as GpuImage : result
 	}
 	_createBgr: func (raster: RasterBgr) -> GpuImage {
-		result := this _searchImageBin(GpuImageType bgr, raster size)
+		result := this _searchImageBin(GpuImageType Bgr, raster size)
 		if (result == null)
 			result = OpenGLBgr new(raster, this)
 		else
@@ -130,11 +130,11 @@ OpenGLContext: class extends GpuContext {
 		result
 	}
 	createBgra: override func (size: IntVector2D) -> GpuImage {
-		result := this _searchImageBin(GpuImageType bgra, size)
+		result := this _searchImageBin(GpuImageType Bgra, size)
 		result == null ? OpenGLBgra new(size, this) as GpuImage : result
 	}
 	_createBgra: func (raster: RasterBgra) -> GpuImage {
-		result := this _searchImageBin(GpuImageType bgra, raster size)
+		result := this _searchImageBin(GpuImageType Bgra, raster size)
 		if (result == null)
 			result = OpenGLBgra new(raster, this)
 		else
@@ -174,7 +174,6 @@ OpenGLContext: class extends GpuContext {
 		target canvas viewport = viewport
 		target canvas draw(source, map)
 	}
-	createFence: override func -> GpuFence { OpenGLFence new(this) }
 	toRasterAsync: override func (source: GpuImage) -> ToRasterFuture { ToRasterFuture new(this toRaster(source)) }
 	createMesh: override func (vertices: FloatPoint3D[], textureCoordinates: FloatPoint2D[]) {
 		toGL := FloatTransform3D createScaling(1.0f, -1.0f, -1.0f)
