@@ -11,7 +11,7 @@ import threading/Mutex
 import ReferenceCounter
 import Debug
 
-ByteBuffer: class {
+ByteBuffer: class { 
 	_pointer: Byte*
 	_size: Int
 	_referenceCount: ReferenceCounter
